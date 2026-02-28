@@ -104,6 +104,29 @@ export default function LandingPage() {
         </div>
       </header>
 
+      {/* NOVA SESSÃO: CARROSSEL DE PARCEIROS/CLIENTES */}
+      <section className="partners-section">
+        <p className="partners-title reveal">Trabalhamos com os melhores fabricantes do mercado</p>
+        <div className="carousel-container reveal delay-100">
+          <div className="carousel-track">
+            {/* Bloco 1 */}
+            <div className="partner-logo">INTELBRAS</div>
+            <div className="partner-logo">FURUKAWA</div>
+            <div className="partner-logo">HIKVISION</div>
+            <div className="partner-logo">CISCO</div>
+            <div className="partner-logo">UBIQUITI</div>
+            <div className="partner-logo">WEG</div>
+            {/* Bloco 2 (Cópia exata para o efeito de rolagem infinita) */}
+            <div className="partner-logo">INTELBRAS</div>
+            <div className="partner-logo">FURUKAWA</div>
+            <div className="partner-logo">HIKVISION</div>
+            <div className="partner-logo">CISCO</div>
+            <div className="partner-logo">UBIQUITI</div>
+            <div className="partner-logo">WEG</div>
+          </div>
+        </div>
+      </section>
+
       {/* SESSÃO DE SOLUÇÕES */}
       <section id="solucoes" className="services-section">
         <div className="section-header reveal">
@@ -169,7 +192,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* NOVA SESSÃO: FORMULÁRIO DE CONTATO */}
+      {/* SESSÃO DE CONTATO */}
       <section id="contato" className="contact-section">
         <div className="contact-container reveal">
           <div className="contact-info">
@@ -218,7 +241,7 @@ export default function LandingPage() {
         </div>
       </footer>
 
-      {/* BOTÃO FLUTUANTE DO WHATSAPP */}
+      {/* BOTÃO FLUTUANTE */}
       <a href="https://wa.me/5571992949859" target="_blank" rel="noreferrer" className="whatsapp-float">
         <FaWhatsapp />
       </a>
