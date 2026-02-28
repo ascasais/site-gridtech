@@ -193,13 +193,13 @@ export default function LandingPage() {
           <div className="service-card reveal delay-200">
             <div className="icon-box"><FaFingerprint /></div>
             <h3>Controle de Acesso</h3>
-            <p>Sistemas de altíssima segurança para condomínios e empresas. Reconhecimento facial de alta velocidade, biometria digital, tags RFID e catracas.</p>
+            <p>Sistemas de altíssima segurança para condomínios e empresas. Reconhecimento facial de alta velocidade, biometria digital, tags RFID, catracas e cancelas para controle veicular.</p>
           </div>
 
           <div className="service-card reveal delay-300">
             <div className="icon-box"><FaCogs /></div>
             <h3>Automação & Interfonia</h3>
-            <p>Automatizadores de portão ultrarrápidos, cancelas para controle veicular e sistemas de interfonia digital IP com alta clareza de áudio e vídeo.</p>
+            <p>Automatizadores de portão ultrarrápidos e sistemas de interfonia digital IP com alta clareza de áudio e vídeo.</p>
           </div>
 
           <div className="service-card reveal delay-400">
