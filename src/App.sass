@@ -304,17 +304,21 @@ html, body
         &:hover
           transform: translateX(5px)
 
-      .features-image
-        flex: 1
-        min-width: 0 // Isso impede a imagem de quebrar a tela
-        .mockup-container
-        // EFEITO 3D DE LUXO AQUI:
+    // CORREÇÃO: Bloco unificado e travado na direita
+    .features-image
+      flex: 1
+      min-width: 0 
+      max-width: 50% 
+      
+      .mockup-container
+        width: 100%
         transform: perspective(1000px) rotateY(-8deg) rotateX(2deg)
         transition: transform 0.5s ease
         &:hover
           transform: perspective(1000px) rotateY(0deg) rotateX(0deg)
           
         .mockup-window
+          width: 100%
           background: #1e293b
           border-radius: 12px
           border: 1px solid #334155
@@ -346,6 +350,9 @@ html, body
               background: #1e293b
               padding: 4px 15px
               border-radius: 20px
+              white-space: nowrap
+              overflow: hidden
+              text-overflow: ellipsis
               
           .mockup-body-real
             width: 100%
@@ -354,49 +361,7 @@ html, body
               width: 100%
               height: auto
               display: block
-      flex: 1
-      .mockup-window
-        background: #1e293b
-        border-radius: 12px
-        border: 1px solid #334155
-        overflow: hidden
-        box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5)
-        .mockup-header
-          background: #0f172a
-          padding: 10px 15px
-          display: flex
-          gap: 6px
-          .dot
-            width: 10px
-            height: 10px
-            border-radius: 50%
-            &.dot-red
-              background: #ef4444
-            &.dot-yellow
-              background: #f59e0b
-            &.dot-green
-              background: #10b981
-        .mockup-body
-          padding: 20px
-          .mockup-skeleton-header
-            height: 20px
-            width: 40%
-            background: #334155
-            border-radius: 4px
-            margin-bottom: 20px
-          .mockup-skeleton-cards
-            display: flex
-            gap: 15px
-            margin-bottom: 20px
-            div
-              flex: 1
-              height: 60px
-              background: #334155
-              border-radius: 8px
-          .mockup-skeleton-chart
-            height: 150px
-            background: #334155
-            border-radius: 8px
+              object-fit: contain
 
 // FOOTER
 .footer-section
@@ -479,10 +444,13 @@ html, body
     flex-direction: column
   .features-section .features-content
     flex-direction: column
+  .features-section .features-content .features-image
+    max-width: 100% // Permite que a imagem volte ao tamanho normal no celular
   .footer-section .footer-grid
     grid-template-columns: 1fr
-    // ==========================================
-// EFEITOS WOW (ANIMAÇÕES DE SCROLL)
+
+// ==========================================
+// EFEITOS WOW (ANIMAÇÕES DE SCROLL) - AGORA FORA DO MOBILE!
 // ==========================================
 .reveal
   opacity: 0
