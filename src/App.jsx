@@ -8,6 +8,14 @@ import './App.sass';
 import logoImg from './assets/logo.png'; 
 import dashboardImg from './assets/dashboard-real.png'; 
 
+// IMPORTAÇÃO DAS SUAS LOGOS REAIS EM PNG
+import ppaLogo from './assets/partners/PPA.png';
+import controlidLogo from './assets/partners/Controlid.png';
+import niceLogo from './assets/partners/Nice.png';
+import furukawaLogo from './assets/partners/Furukawa.png';
+import hikvisionLogo from './assets/partners/Hikvision.png';
+import intelbrasLogo from './assets/partners/Intelbras.png';
+
 export default function LandingPage() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -104,30 +112,30 @@ export default function LandingPage() {
         </div>
       </header>
 
-      {/* SESSÃO DE PARCEIROS/CLIENTES */}
+      {/* SESSÃO DE PARCEIROS/CLIENTES COM AS LOGOS REAIS */}
       <section className="partners-section">
         <p className="partners-title reveal">Trabalhamos com os melhores fabricantes do mercado</p>
         <div className="carousel-container reveal delay-100">
           <div className="carousel-track">
             {/* Bloco 1 */}
-            <div className="partner-logo">INTELBRAS</div>
-            <div className="partner-logo">FURUKAWA</div>
-            <div className="partner-logo">HIKVISION</div>
-            <div className="partner-logo">PPA</div>
-            <div className="partner-logo">LINEAR</div>
-            <div className="partner-logo">WEG</div>
-            {/* Bloco 2 */}
-            <div className="partner-logo">INTELBRAS</div>
-            <div className="partner-logo">FURUKAWA</div>
-            <div className="partner-logo">HIKVISION</div>
-            <div className="partner-logo">PPA</div>
-            <div className="partner-logo">LINEAR</div>
-            <div className="partner-logo">WEG</div>
+            <div className="partner-logo"><img src={intelbrasLogo} alt="Intelbras" /></div>
+            <div className="partner-logo"><img src={furukawaLogo} alt="Furukawa" /></div>
+            <div className="partner-logo"><img src={hikvisionLogo} alt="Hikvision" /></div>
+            <div className="partner-logo"><img src={ppaLogo} alt="PPA" /></div>
+            <div className="partner-logo"><img src={controlidLogo} alt="Control iD" /></div>
+            <div className="partner-logo"><img src={niceLogo} alt="Nice" /></div>
+            {/* Bloco 2 (Cópia para efeito infinito) */}
+            <div className="partner-logo"><img src={intelbrasLogo} alt="Intelbras" /></div>
+            <div className="partner-logo"><img src={furukawaLogo} alt="Furukawa" /></div>
+            <div className="partner-logo"><img src={hikvisionLogo} alt="Hikvision" /></div>
+            <div className="partner-logo"><img src={ppaLogo} alt="PPA" /></div>
+            <div className="partner-logo"><img src={controlidLogo} alt="Control iD" /></div>
+            <div className="partner-logo"><img src={niceLogo} alt="Nice" /></div>
           </div>
         </div>
       </section>
 
-      {/* SESSÃO DE SOLUÇÕES (Focada em Segurança e Condomínios) */}
+      {/* SESSÃO DE SOLUÇÕES */}
       <section id="solucoes" className="services-section">
         <div className="section-header reveal">
           <h2>Nosso <span className="highlight">Portfólio</span></h2>
@@ -135,28 +143,24 @@ export default function LandingPage() {
         </div>
 
         <div className="services-grid">
-          {/* Card 1: CFTV */}
           <div className="service-card reveal delay-100">
             <div className="icon-box"><FaVideo /></div>
             <h3>CFTV Inteligente</h3>
             <p>Sistemas de câmeras HD/IP com Inteligência Artificial. Analíticos de vídeo avançados para detecção facial, cruzamento de linha e alerta de intrusão real.</p>
           </div>
           
-          {/* Card 2: Controle de Acesso */}
           <div className="service-card reveal delay-200">
             <div className="icon-box"><FaFingerprint /></div>
             <h3>Controle de Acesso</h3>
             <p>Sistemas de altíssima segurança para condomínios e empresas. Reconhecimento facial de alta velocidade, biometria digital, tags RFID e catracas.</p>
           </div>
 
-          {/* Card 3: Automação e Interfonia */}
           <div className="service-card reveal delay-300">
             <div className="icon-box"><FaCogs /></div>
             <h3>Automação & Interfonia</h3>
             <p>Automatizadores de portão ultrarrápidos, cancelas para controle veicular e sistemas de interfonia digital IP com alta clareza de áudio e vídeo.</p>
           </div>
 
-          {/* Card 4: Redes */}
           <div className="service-card reveal delay-400">
             <div className="icon-box"><FaNetworkWired /></div>
             <h3>Infraestrutura de Redes</h3>
