@@ -1,4 +1,10 @@
-// Variáveis de Cor (Tema Sênior)
+// ==========================================
+// FIX GLOBAL (ISSO CORRIGE O CORTE NO CELULAR)
+// ==========================================
+*
+  box-sizing: border-box
+
+// Variáveis de Cor
 $bg-dark: #0f172a
 $bg-darker: #020617
 $primary: #3b82f6
@@ -18,6 +24,7 @@ html, body
 
 .landing-container
   width: 100%
+  overflow-x: hidden
 
 // NAVEGAÇÃO
 .navbar
@@ -95,7 +102,6 @@ html, body
     top: 100%
     left: 0
     width: 100%
-    box-sizing: border-box
     button, a
       padding: 15px
       text-align: left
@@ -114,7 +120,6 @@ html, body
   align-items: center
   justify-content: center
   padding: 0 20px
-  overflow: hidden
   
   .grid-overlay
     position: absolute
@@ -132,6 +137,7 @@ html, body
     position: relative
     z-index: 1
     max-width: 800px
+    width: 100%
     text-align: center
     margin-top: 60px
 
@@ -196,7 +202,6 @@ html, body
         &:hover
           background: rgba(255,255,255,0.1)
 
-// SECTION COMMONS
 .section-header
   text-align: center
   margin-bottom: 60px
@@ -209,7 +214,6 @@ html, body
     color: $text-muted
     font-size: 16px
 
-// SERVICES
 .services-section
   padding: 100px 20px
   background: $bg-dark
@@ -252,7 +256,6 @@ html, body
         line-height: 1.5
         margin: 0
 
-// FEATURES
 .features-section
   padding: 100px 20px
   background: $bg-darker
@@ -304,7 +307,6 @@ html, body
         &:hover
           transform: translateX(5px)
 
-    // CORREÇÃO: Bloco unificado e travado na direita
     .features-image
       flex: 1
       min-width: 0 
@@ -363,54 +365,125 @@ html, body
               display: block
               object-fit: contain
 
+// ==========================================
+// FORMULÁRIO DE CONTATO PREMIUM
+// ==========================================
+.contact-section
+  padding: 100px 20px
+  background: $bg-dark
+  
+  .contact-container
+    max-width: 1000px
+    margin: 0 auto
+    display: flex
+    gap: 50px
+    background: $card-bg
+    padding: 50px
+    border-radius: 24px
+    border: 1px solid rgba(255,255,255,0.05)
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2)
+
+    .contact-info
+      flex: 1
+      h2
+        font-size: 36px
+        margin: 0 0 20px 0
+        .highlight
+          color: $primary
+      p
+        color: $text-muted
+        font-size: 16px
+        line-height: 1.6
+        margin-bottom: 40px
+
+      .info-items
+        display: flex
+        flex-direction: column
+        gap: 20px
+        .info-item
+          display: flex
+          align-items: center
+          gap: 15px
+          .info-icon
+            width: 40px
+            height: 40px
+            background: rgba(59, 130, 246, 0.1)
+            color: $primary
+            border-radius: 50%
+            display: flex
+            align-items: center
+            justify-content: center
+            font-size: 18px
+            padding: 10px
+          span
+            font-weight: 500
+            font-size: 16px
+
+    .contact-form
+      flex: 1
+      form
+        display: flex
+        flex-direction: column
+        gap: 15px
+        
+        .input-group
+          width: 100%
+          input, textarea
+            width: 100%
+            padding: 16px
+            background: rgba(15, 23, 42, 0.6)
+            border: 1px solid rgba(255,255,255,0.1)
+            border-radius: 12px
+            color: white
+            font-family: inherit
+            font-size: 15px
+            transition: border-color 0.3s
+            &:focus
+              outline: none
+              border-color: $primary
+              background: rgba(15, 23, 42, 0.9)
+
+        .btn-submit
+          background: $primary
+          color: white
+          border: none
+          padding: 16px
+          border-radius: 12px
+          font-weight: bold
+          font-size: 16px
+          cursor: pointer
+          display: flex
+          align-items: center
+          justify-content: center
+          gap: 10px
+          margin-top: 10px
+          transition: all 0.3s
+          &:hover
+            background: $primary-hover
+            transform: translateY(-2px)
+
 // FOOTER
 .footer-section
   background: #020617
   border-top: 1px solid rgba(255,255,255,0.05)
-  padding: 60px 20px 20px 20px
-
-  .footer-grid
-    max-width: 1200px
-    margin: 0 auto
-    display: grid
-    grid-template-columns: 2fr 1fr 1fr
-    gap: 40px
-    margin-bottom: 40px
-
-    .footer-logo
-      height: 40px
-      margin-bottom: 15px
-    p
-      color: $text-muted
-      font-size: 14px
-
-    h4
-      color: $text-light
-      margin: 0 0 20px 0
-    ul
-      list-style: none
-      padding: 0
-      margin: 0
-      li
-        color: $text-muted
-        font-size: 14px
-        margin-bottom: 10px
-        cursor: pointer
-        &:hover
-          color: $primary
+  padding: 40px 20px
 
   .footer-bottom
     max-width: 1200px
     margin: 0 auto
-    border-top: 1px solid rgba(255,255,255,0.05)
-    padding-top: 20px
     text-align: center
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: 15px
+    .footer-logo
+      height: 30px
+      opacity: 0.5
     p
       margin: 0
       color: $text-muted
       font-size: 12px
 
-// WHATSAPP FLOAT
 .whatsapp-float
   position: fixed
   bottom: 30px
@@ -430,7 +503,9 @@ html, body
   &:hover
     transform: scale(1.1)
 
-// RESPONSIVO
+// ==========================================
+// RESPONSIVO (CORREÇÕES PARA CELULAR)
+// ==========================================
 @media (max-width: 768px)
   .desktop-only
     display: none !important
@@ -442,16 +517,23 @@ html, body
     font-size: 40px
   .hero-section .hero-buttons
     flex-direction: column
+  
+  // Conserta as quebras de tela
   .features-section .features-content
     flex-direction: column
   .features-section .features-content .features-image
-    max-width: 100% // Permite que a imagem volte ao tamanho normal no celular
-  .footer-section .footer-grid
-    grid-template-columns: 1fr
+    max-width: 100% 
+    .mockup-container
+      // Desliga o efeito 3D no celular para não bugar a tela
+      transform: none !important
+      &:hover
+        transform: none !important
 
-// ==========================================
-// EFEITOS WOW (ANIMAÇÕES DE SCROLL) - AGORA FORA DO MOBILE!
-// ==========================================
+  .contact-section .contact-container
+    flex-direction: column
+    padding: 30px
+
+// EFEITOS WOW (FORA DO MOBILE BREAKPOINT)
 .reveal
   opacity: 0
   transform: translateY(40px)

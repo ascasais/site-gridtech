@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { 
   FaNetworkWired, FaShieldAlt, FaServer, FaTools, 
-  FaWhatsapp, FaArrowRight, FaLaptopCode, FaCheckCircle, FaBars, FaTimes
+  FaWhatsapp, FaArrowRight, FaLaptopCode, FaCheckCircle, FaBars, FaTimes,
+  FaEnvelope, FaPhoneAlt
 } from 'react-icons/fa';
 import './App.sass';
 import logoImg from './assets/logo.png'; 
@@ -11,16 +12,12 @@ export default function LandingPage() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // EFEITO 1: Mudar o menu ao rolar a página
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // EFEITO 2: Motor de Animação de Rolagem (Efeito Wow)
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -28,14 +25,12 @@ export default function LandingPage() {
           entry.target.classList.add('active');
         }
       });
-    }, { threshold: 0.1 }); // Dispara quando 10% do elemento aparece
+    }, { threshold: 0.1 });
 
     const hiddenElements = document.querySelectorAll('.reveal');
     hiddenElements.forEach((el) => observer.observe(el));
 
-    return () => {
-      hiddenElements.forEach((el) => observer.unobserve(el));
-    };
+    return () => hiddenElements.forEach((el) => observer.unobserve(el));
   }, []);
 
   const scrollTo = (id) => {
@@ -44,6 +39,11 @@ export default function LandingPage() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleContato = (e) => {
+    e.preventDefault();
+    alert("Como não temos backend no site, o ideal é usar um serviço como EmailJS depois! Mas o layout está pronto.");
   };
 
   return (
@@ -56,7 +56,7 @@ export default function LandingPage() {
           <div className="nav-links desktop-only">
             <button onClick={() => scrollTo('home')}>Início</button>
             <button onClick={() => scrollTo('solucoes')}>Soluções</button>
-            <button onClick={() => scrollTo('diferenciais')}>Por que a GridTech?</button>
+            <button onClick={() => scrollTo('diferenciais')}>Diferenciais</button>
             <button onClick={() => scrollTo('contato')}>Contato</button>
           </div>
 
@@ -77,6 +77,7 @@ export default function LandingPage() {
             <button onClick={() => scrollTo('home')}>Início</button>
             <button onClick={() => scrollTo('solucoes')}>Soluções</button>
             <button onClick={() => scrollTo('diferenciais')}>Diferenciais</button>
+            <button onClick={() => scrollTo('contato')}>Contato</button>
             <a href="https://web.gridtechtecnologia.com.br" className="btn-login-mobile">
               <FaLaptopCode /> Área do Cliente
             </a>
@@ -84,7 +85,7 @@ export default function LandingPage() {
         )}
       </nav>
 
-      {/* SESSÃO HERO (TOPO IMPACTANTE) */}
+      {/* SESSÃO HERO */}
       <header id="home" className="hero-section">
         <div className="grid-overlay"></div>
         <div className="hero-content reveal">
@@ -111,7 +112,6 @@ export default function LandingPage() {
         </div>
 
         <div className="services-grid">
-          {/* Note os delays: 100, 200, 300, 400 para efeito "escadinha" */}
           <div className="service-card reveal delay-100">
             <div className="icon-box"><FaNetworkWired /></div>
             <h3>Infraestrutura de Redes</h3>
@@ -135,7 +135,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* SESSÃO DE DIFERENCIAIS (COM O PRINT REAL E 3D) */}
+      {/* SESSÃO DE DIFERENCIAIS */}
       <section id="diferenciais" className="features-section">
         <div className="features-content">
           <div className="features-text reveal">
@@ -169,28 +169,51 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* SESSÃO FOOTER / CONTATO */}
-      <footer id="contato" className="footer-section">
-        <div className="footer-grid reveal">
-          <div className="footer-brand">
-            <img src={logoImg} alt="GridTech" className="footer-logo" />
-            <p>Elevando o padrão da infraestrutura tecnológica na sua região.</p>
+      {/* NOVA SESSÃO: FORMULÁRIO DE CONTATO */}
+      <section id="contato" className="contact-section">
+        <div className="contact-container reveal">
+          <div className="contact-info">
+            <h2>Fale com um <span className="highlight">Especialista</span></h2>
+            <p>Pronto para elevar o padrão da sua infraestrutura? Preencha os dados abaixo e nossa equipe comercial entrará em contato em até 24 horas.</p>
+            
+            <div className="info-items">
+              <div className="info-item">
+                <FaEnvelope className="info-icon" />
+                <span>comercial@gridtechtecnologia.com.br</span>
+              </div>
+              <div className="info-item">
+                <FaPhoneAlt className="info-icon" />
+                <span>(71) 99294-9859</span>
+              </div>
+            </div>
           </div>
-          <div className="footer-links">
-            <h4>Links Rápidos</h4>
-            <ul>
-              <li onClick={() => scrollTo('home')}>Início</li>
-              <li onClick={() => scrollTo('solucoes')}>Serviços</li>
-              <li onClick={() => scrollTo('diferenciais')}>Portal do Cliente</li>
-            </ul>
-          </div>
-          <div className="footer-contact">
-            <h4>Fale Conosco</h4>
-            <p><strong>E-mail:</strong> comercial@gridtechtecnologia.com.br</p>
-            <p><strong>Atendimento:</strong> (71) 99294-9859</p>
+
+          <div className="contact-form">
+            <form onSubmit={handleContato}>
+              <div className="input-group">
+                <input type="text" placeholder="Seu Nome completo" required />
+              </div>
+              <div className="input-group">
+                <input type="email" placeholder="E-mail corporativo" required />
+              </div>
+              <div className="input-group">
+                <input type="tel" placeholder="Seu Telefone / WhatsApp" required />
+              </div>
+              <div className="input-group">
+                <textarea placeholder="Como podemos te ajudar? (Descreva brevemente sua necessidade)" rows="4" required></textarea>
+              </div>
+              <button type="submit" className="btn-submit">
+                Enviar Mensagem <FaArrowRight />
+              </button>
+            </form>
           </div>
         </div>
+      </section>
+
+      {/* SESSÃO FOOTER */}
+      <footer className="footer-section">
         <div className="footer-bottom">
+          <img src={logoImg} alt="GridTech" className="footer-logo" />
           <p>&copy; {new Date().getFullYear()} GridTech Tecnologia. Todos os direitos reservados.</p>
         </div>
       </footer>
