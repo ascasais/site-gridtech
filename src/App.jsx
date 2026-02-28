@@ -4,6 +4,7 @@ import {
   FaWhatsapp, FaArrowRight, FaLaptopCode, FaCheckCircle, FaBars, FaTimes,
   FaEnvelope, FaPhoneAlt
 } from 'react-icons/fa';
+import emailjs from '@emailjs/browser'; // IMPORTAÇÃO DO MOTOR DE E-MAIL
 import './App.sass';
 import logoImg from './assets/logo.png'; 
 import dashboardImg from './assets/dashboard-real.png'; 
@@ -15,10 +16,21 @@ import niceLogo from './assets/partners/Nice.png';
 import furukawaLogo from './assets/partners/Furukawa.png';
 import hikvisionLogo from './assets/partners/Hikvision.png';
 import intelbrasLogo from './assets/partners/Intelbras.png';
+import tplinkLogo from './assets/partners/Tplink.png';
 
 export default function LandingPage() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // ESTADOS DO FORMULÁRIO DE CONTATO
+  const [formData, setFormData] = useState({
+    from_name: '',
+    from_email: '',
+    phone: '',
+    message: ''
+  });
+  const [isSending, setIsSending] = useState(false);
+  const [sendSuccess, setSendSuccess] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -49,9 +61,36 @@ export default function LandingPage() {
     }
   };
 
+  // CAPTURA O QUE O CLIENTE DIGITA
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // MOTOR DE DISPARO (EMAILJS)
   const handleContato = (e) => {
     e.preventDefault();
-    alert("Como não temos backend no site, o ideal é usar um serviço como EmailJS depois! Mas o layout está pronto.");
+    setIsSending(true);
+
+    // Usa as chaves que você criou no painel
+    emailjs.send(
+      'service_m4lx6cs', // Seu Service ID
+      'template_6hp1fjd', // Seu Template ID
+      formData,           // Os dados preenchidos no form
+      '39aYk_Y8QvGllfqbd' // Sua Public Key
+    )
+    .then((result) => {
+        console.log("E-mail enviado com sucesso!", result.text);
+        setIsSending(false);
+        setSendSuccess(true);
+        // Limpa o formulário
+        setFormData({ from_name: '', from_email: '', phone: '', message: '' });
+        // Tira a mensagem de sucesso após 5 segundos
+        setTimeout(() => setSendSuccess(false), 5000);
+    }, (error) => {
+        console.log("Erro ao enviar o e-mail.", error.text);
+        alert("Ocorreu um erro ao enviar sua mensagem. Por favor, tente pelo WhatsApp.");
+        setIsSending(false);
+    });
   };
 
   return (
@@ -124,6 +163,7 @@ export default function LandingPage() {
             <div className="partner-logo"><img src={ppaLogo} alt="PPA" /></div>
             <div className="partner-logo"><img src={controlidLogo} alt="Control iD" /></div>
             <div className="partner-logo"><img src={niceLogo} alt="Nice" /></div>
+            <div className="partner-logo"><img src={tplinkLogo} alt="Tplink" /></div>
             {/* Bloco 2 (Cópia para efeito infinito) */}
             <div className="partner-logo"><img src={intelbrasLogo} alt="Intelbras" /></div>
             <div className="partner-logo"><img src={furukawaLogo} alt="Furukawa" /></div>
@@ -131,6 +171,7 @@ export default function LandingPage() {
             <div className="partner-logo"><img src={ppaLogo} alt="PPA" /></div>
             <div className="partner-logo"><img src={controlidLogo} alt="Control iD" /></div>
             <div className="partner-logo"><img src={niceLogo} alt="Nice" /></div>
+            <div className="partner-logo"><img src={tplinkLogo} alt="Tplink" /></div>
           </div>
         </div>
       </section>
@@ -203,7 +244,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* SESSÃO DE CONTATO */}
+      {/* SESSÃO DE CONTATO (AGORA CONECTADA AO EMAILJS) */}
       <section id="contato" className="contact-section">
         <div className="contact-container reveal">
           <div className="contact-info">
@@ -223,23 +264,30 @@ export default function LandingPage() {
           </div>
 
           <div className="contact-form">
-            <form onSubmit={handleContato}>
-              <div className="input-group">
-                <input type="text" placeholder="Seu Nome completo" required />
+            {sendSuccess ? (
+              <div className="success-message" style={{ background: '#10b981', color: 'white', padding: '20px', borderRadius: '12px', textAlign: 'center', fontWeight: 'bold' }}>
+                <FaCheckCircle style={{ fontSize: '30px', marginBottom: '10px' }} />
+                <br /> Mensagem enviada com sucesso! Nossa equipe entrará em contato em breve.
               </div>
-              <div className="input-group">
-                <input type="email" placeholder="E-mail corporativo" required />
-              </div>
-              <div className="input-group">
-                <input type="tel" placeholder="Seu Telefone / WhatsApp" required />
-              </div>
-              <div className="input-group">
-                <textarea placeholder="Como podemos te ajudar? (Descreva brevemente sua necessidade)" rows="4" required></textarea>
-              </div>
-              <button type="submit" className="btn-submit">
-                Enviar Mensagem <FaArrowRight />
-              </button>
-            </form>
+            ) : (
+              <form onSubmit={handleContato}>
+                <div className="input-group">
+                  <input type="text" name="from_name" placeholder="Seu Nome completo" value={formData.from_name} onChange={handleChange} required />
+                </div>
+                <div className="input-group">
+                  <input type="email" name="from_email" placeholder="E-mail corporativo" value={formData.from_email} onChange={handleChange} required />
+                </div>
+                <div className="input-group">
+                  <input type="tel" name="phone" placeholder="Seu Telefone / WhatsApp" value={formData.phone} onChange={handleChange} required />
+                </div>
+                <div className="input-group">
+                  <textarea name="message" placeholder="Como podemos te ajudar? (Descreva brevemente sua necessidade)" rows="4" value={formData.message} onChange={handleChange} required></textarea>
+                </div>
+                <button type="submit" className="btn-submit" disabled={isSending}>
+                  {isSending ? 'Enviando aguarde...' : <>Enviar Mensagem <FaArrowRight /></>}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </section>
