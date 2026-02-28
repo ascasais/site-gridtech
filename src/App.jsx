@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  FaNetworkWired, FaShieldAlt, FaServer, FaTools, 
+  FaNetworkWired, FaShieldAlt, FaVideo, FaFingerprint, FaCogs,
   FaWhatsapp, FaArrowRight, FaLaptopCode, FaCheckCircle, FaBars, FaTimes,
   FaEnvelope, FaPhoneAlt
 } from 'react-icons/fa';
