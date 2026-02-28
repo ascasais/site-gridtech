@@ -91,7 +91,7 @@ export default function LandingPage() {
         <div className="hero-content reveal">
           <div className="badge">Especialistas em Infraestrutura de TI</div>
           <h1>Tecnologia que <span className="highlight">Conecta e Protege</span> o seu Negócio.</h1>
-          <p>Soluções completas em cabeamento estruturado, segurança eletrônica e manutenção técnica para empresas que não podem parar.</p>
+          <p>Soluções completas em segurança eletrônica, controle de acesso e automação para condomínios e empresas que exigem excelência.</p>
           
           <div className="hero-buttons">
             <button className="btn-primary" onClick={() => scrollTo('contato')}>
@@ -104,7 +104,7 @@ export default function LandingPage() {
         </div>
       </header>
 
-      {/* NOVA SESSÃO: CARROSSEL DE PARCEIROS/CLIENTES */}
+      {/* SESSÃO DE PARCEIROS/CLIENTES */}
       <section className="partners-section">
         <p className="partners-title reveal">Trabalhamos com os melhores fabricantes do mercado</p>
         <div className="carousel-container reveal delay-100">
@@ -113,47 +113,54 @@ export default function LandingPage() {
             <div className="partner-logo">INTELBRAS</div>
             <div className="partner-logo">FURUKAWA</div>
             <div className="partner-logo">HIKVISION</div>
-            <div className="partner-logo">CISCO</div>
-            <div className="partner-logo">UBIQUITI</div>
+            <div className="partner-logo">PPA</div>
+            <div className="partner-logo">LINEAR</div>
             <div className="partner-logo">WEG</div>
-            {/* Bloco 2 (Cópia exata para o efeito de rolagem infinita) */}
+            {/* Bloco 2 */}
             <div className="partner-logo">INTELBRAS</div>
             <div className="partner-logo">FURUKAWA</div>
             <div className="partner-logo">HIKVISION</div>
-            <div className="partner-logo">CISCO</div>
-            <div className="partner-logo">UBIQUITI</div>
+            <div className="partner-logo">PPA</div>
+            <div className="partner-logo">LINEAR</div>
             <div className="partner-logo">WEG</div>
           </div>
         </div>
       </section>
 
-      {/* SESSÃO DE SOLUÇÕES */}
+      {/* SESSÃO DE SOLUÇÕES (Focada em Segurança e Condomínios) */}
       <section id="solucoes" className="services-section">
         <div className="section-header reveal">
           <h2>Nosso <span className="highlight">Portfólio</span></h2>
-          <p>Engenharia e tecnologia aplicadas para garantir a máxima disponibilidade da sua operação.</p>
+          <p>Engenharia e tecnologia aplicadas para garantir a máxima segurança da sua operação.</p>
         </div>
 
         <div className="services-grid">
+          {/* Card 1: CFTV */}
           <div className="service-card reveal delay-100">
+            <div className="icon-box"><FaVideo /></div>
+            <h3>CFTV Inteligente</h3>
+            <p>Sistemas de câmeras HD/IP com Inteligência Artificial. Analíticos de vídeo avançados para detecção facial, cruzamento de linha e alerta de intrusão real.</p>
+          </div>
+          
+          {/* Card 2: Controle de Acesso */}
+          <div className="service-card reveal delay-200">
+            <div className="icon-box"><FaFingerprint /></div>
+            <h3>Controle de Acesso</h3>
+            <p>Sistemas de altíssima segurança para condomínios e empresas. Reconhecimento facial de alta velocidade, biometria digital, tags RFID e catracas.</p>
+          </div>
+
+          {/* Card 3: Automação e Interfonia */}
+          <div className="service-card reveal delay-300">
+            <div className="icon-box"><FaCogs /></div>
+            <h3>Automação & Interfonia</h3>
+            <p>Automatizadores de portão ultrarrápidos, cancelas para controle veicular e sistemas de interfonia digital IP com alta clareza de áudio e vídeo.</p>
+          </div>
+
+          {/* Card 4: Redes */}
+          <div className="service-card reveal delay-400">
             <div className="icon-box"><FaNetworkWired /></div>
             <h3>Infraestrutura de Redes</h3>
-            <p>Cabeamento estruturado, fusão de fibra óptica, montagem de racks e certificação de redes corporativas.</p>
-          </div>
-          <div className="service-card reveal delay-200">
-            <div className="icon-box"><FaShieldAlt /></div>
-            <h3>Segurança Eletrônica</h3>
-            <p>Sistemas de CFTV HD/IP, controle de acesso facial e biometria, alarmes e monitoramento inteligente.</p>
-          </div>
-          <div className="service-card reveal delay-300">
-            <div className="icon-box"><FaServer /></div>
-            <h3>Datacenter & Servidores</h3>
-            <p>Projetos de sala cofre, adequação elétrica, refrigeração de TI e organização de ativos.</p>
-          </div>
-          <div className="service-card reveal delay-400">
-            <div className="icon-box"><FaTools /></div>
-            <h3>Manutenção Preventiva</h3>
-            <p>Contratos de suporte técnico especializado, atendimento via SLA e portal exclusivo para abertura de OS.</p>
+            <p>A base de toda a segurança: cabeamento estruturado certificado e fusão de fibra óptica para garantir que o seu sistema de câmeras e internet nunca caia.</p>
           </div>
         </div>
       </section>
