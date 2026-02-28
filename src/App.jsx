@@ -4,13 +4,13 @@ import {
   FaWhatsapp, FaArrowRight, FaLaptopCode, FaCheckCircle, FaBars, FaTimes
 } from 'react-icons/fa';
 import './App.sass';
-import logoImg from './assets/logo.png'; // Coloque sua logo na pasta assets
+import logoImg from './assets/logo.png'; 
+import dashboardImg from './assets/dashboard-real.png'; // NOVA IMPORTAÇÃO DO PRINT REAL
 
 export default function LandingPage() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Efeito para mudar o menu ao rolar a página
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -115,7 +115,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* SESSÃO DE DIFERENCIAIS (O DESTAQUE DO SEU NOVO SISTEMA) */}
+      {/* SESSÃO DE DIFERENCIAIS (COM O PRINT REAL E 3D) */}
       <section id="diferenciais" className="features-section">
         <div className="features-content">
           <div className="features-text">
@@ -134,17 +134,15 @@ export default function LandingPage() {
             </a>
           </div>
           <div className="features-image">
-            <div className="mockup-window">
-              {/* Aqui você pode colocar um print bonito do Dashboard que construímos */}
-              <div className="mockup-header">
-                <span className="dot dot-red"></span><span className="dot dot-yellow"></span><span className="dot dot-green"></span>
-              </div>
-              <div className="mockup-body">
-                <div className="mockup-skeleton-header"></div>
-                <div className="mockup-skeleton-cards">
-                  <div></div><div></div><div></div>
+            <div className="mockup-container"> {/* NOVA ESTRUTURA PARA O EFEITO 3D */}
+              <div className="mockup-window">
+                <div className="mockup-header">
+                  <span className="dot dot-red"></span><span className="dot dot-yellow"></span><span className="dot dot-green"></span>
+                  <div className="mockup-url">gridtech.dashboard.live</div>
                 </div>
-                <div className="mockup-skeleton-chart"></div>
+                <div className="mockup-body-real">
+                  <img src={dashboardImg} alt="Painel GridTech Real" className="real-dashboard-img" />
+                </div>
               </div>
             </div>
           </div>
@@ -168,8 +166,8 @@ export default function LandingPage() {
           </div>
           <div className="footer-contact">
             <h4>Fale Conosco</h4>
-            <p><strong>E-mail:</strong> comercial@gridtechtecnologia.com.br</p>
-            <p><strong>Atendimento:</strong> (71) 99294-9859</p>
+            <p><strong>E-mail:</strong> contato@gridtechtecnologia.com.br</p>
+            <p><strong>Atendimento:</strong> (XX) 9XXXX-XXXX</p>
           </div>
         </div>
         <div className="footer-bottom">
@@ -178,7 +176,7 @@ export default function LandingPage() {
       </footer>
 
       {/* BOTÃO FLUTUANTE DO WHATSAPP */}
-      <a href="https://wa.me/5571992949859" target="_blank" rel="noreferrer" className="whatsapp-float">
+      <a href="https://wa.me/55SEUNUMERO" target="_blank" rel="noreferrer" className="whatsapp-float">
         <FaWhatsapp />
       </a>
     </div>
