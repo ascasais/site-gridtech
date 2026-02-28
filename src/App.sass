@@ -208,6 +208,9 @@ $card-bg: rgba(30, 41, 59, 0.5)
 // ==========================================
 // CARROSSEL DE CLIENTES - REFORMULADO 3D/WOW
 // ==========================================
+// ==========================================
+// CARROSSEL DE CLIENTES (CORES REAIS 100% DO TEMPO)
+// ==========================================
 .partners-section
   background: $bg-darker
   padding: 40px 0
@@ -248,27 +251,24 @@ $card-bg: rgba(30, 41, 59, 0.5)
       display: flex
       width: max-content
       animation: scroll 30s linear infinite
-      align-items: center // Alinha logos de alturas diferentes
+      align-items: center 
       
       .partner-logo
         display: inline-block
-        margin: 0 50px // Mais espaço entre as logos coloridas
+        margin: 0 50px 
         width: auto
         
-        // EFEITO TOQUE SÊNIOR: Branco por padrão, oficial no hover
+        // LOGOS COM COR REAL DIRETO
         img
-          height: 40px // Trava a altura de todas as logos
-          width: auto // Respeita a proporção da logo
+          height: 40px 
+          width: auto 
           object-fit: contain
-          transition: all 0.4s ease // Transição suave
-          filter: grayscale(100%) brightness(5) opacity(0.8) // Fica branco nítido
+          transition: transform 0.3s ease 
 
-        // QUANDO PASSA O MOUSE, ACENDE A COR REAL
+        // ZOOM LEVE NO HOVER
         &:hover
           img
-            filter: grayscale(0%) brightness(1) opacity(1) // Volta à cor oficial
-            transform: scale(1.05) // Micro-aumento pra dar energia
-
+            transform: scale(1.1)
 @keyframes scroll
   0%
     transform: translateX(0)
