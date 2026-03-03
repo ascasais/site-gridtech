@@ -199,13 +199,13 @@ export default function LandingPage() {
           <div className="service-card reveal delay-300">
             <div className="icon-box"><FaCogs /></div>
             <h3>Automação & Interfonia</h3>
-            <p>Automatizadores de portão ultrarrápidos e sistemas de interfonia digital IP com alta clareza de áudio e vídeo.</p>
+            <p>Automatizadores de portão ultrarrápidos e sistemas de interfonia digital IP com alta clareza de áudio e vídeo, além, de interfonia via celular para você não perder nenhuma chamada.</p>
           </div>
 
           <div className="service-card reveal delay-400">
             <div className="icon-box"><FaNetworkWired /></div>
             <h3>Infraestrutura de Redes</h3>
-            <p>A base de toda a segurança: cabeamento estruturado certificado e fusão de fibra óptica para garantir que o seu sistema de câmeras e internet nunca caia.</p>
+            <p>A base de toda a segurança: cabeamento estruturado e fusão de fibra óptica para garantir que o seu sistema de câmeras e internet nunca caia.</p>
           </div>
         </div>
       </section>
