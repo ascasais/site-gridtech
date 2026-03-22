@@ -4,12 +4,11 @@ import {
   FaWhatsapp, FaArrowRight, FaLaptopCode, FaCheckCircle, FaBars, FaTimes,
   FaEnvelope, FaPhoneAlt
 } from 'react-icons/fa';
-import emailjs from '@emailjs/browser'; // IMPORTAÇÃO DO MOTOR DE E-MAIL
+import emailjs from '@emailjs/browser';
 import './App.sass';
 import logoImg from './assets/logo.png'; 
 import dashboardImg from './assets/dashboard-real.png'; 
 
-// IMPORTAÇÃO DAS SUAS LOGOS REAIS EM PNG
 import ppaLogo from './assets/partners/PPA.png';
 import controlidLogo from './assets/partners/Controlid.png';
 import niceLogo from './assets/partners/Nice.png';
@@ -22,7 +21,6 @@ export default function LandingPage() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // ESTADOS DO FORMULÁRIO DE CONTATO
   const [formData, setFormData] = useState({
     from_name: '',
     from_email: '',
@@ -33,6 +31,9 @@ export default function LandingPage() {
   const [sendSuccess, setSendSuccess] = useState(false);
 
   useEffect(() => {
+    // Título atualizado focado no negócio principal
+    document.title = "GridTech - Segurança Eletrônica e Infraestrutura";
+    
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -61,33 +62,26 @@ export default function LandingPage() {
     }
   };
 
-  // CAPTURA O QUE O CLIENTE DIGITA
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // MOTOR DE DISPARO (EMAILJS)
   const handleContato = (e) => {
     e.preventDefault();
     setIsSending(true);
 
-    // Usa as chaves que você criou no painel
     emailjs.send(
-      'service_m4lx6cs', // Seu Service ID
-      'template_6hp1fjd', // Seu Template ID
-      formData,           // Os dados preenchidos no form
-      '39aYk_Y8QvGllfqbd' // Sua Public Key
+      'service_m4lx6cs', 
+      'template_6hp1fjd', 
+      formData,           
+      '39aYk_Y8QvGllfqbd' 
     )
     .then((result) => {
-        console.log("E-mail enviado com sucesso!", result.text);
         setIsSending(false);
         setSendSuccess(true);
-        // Limpa o formulário
         setFormData({ from_name: '', from_email: '', phone: '', message: '' });
-        // Tira a mensagem de sucesso após 5 segundos
         setTimeout(() => setSendSuccess(false), 5000);
     }, (error) => {
-        console.log("Erro ao enviar o e-mail.", error.text);
         alert("Ocorreu um erro ao enviar sua mensagem. Por favor, tente pelo WhatsApp.");
         setIsSending(false);
     });
@@ -136,7 +130,9 @@ export default function LandingPage() {
       <header id="home" className="hero-section">
         <div className="grid-overlay"></div>
         <div className="hero-content reveal">
-          <div className="badge">Especialistas em Infraestrutura de TI</div>
+          {/* 🔥 BADGE COM EFEITO NEON E TEXTO FOCADO 🔥 */}
+          <div className="badge">Engenharia Aplicada em Segurança Eletrônica</div>
+          
           <h1>Tecnologia que <span className="highlight">Conecta e Protege</span> o seu Negócio.</h1>
           <p>Soluções completas em segurança eletrônica, controle de acesso e automação para condomínios e empresas que exigem excelência.</p>
           
@@ -151,7 +147,7 @@ export default function LandingPage() {
         </div>
       </header>
 
-      {/* SESSÃO DE PARCEIROS/CLIENTES COM AS LOGOS REAIS */}
+      {/* SESSÃO DE PARCEIROS COLORIDOS */}
       <section className="partners-section">
         <p className="partners-title reveal">Trabalhamos com os melhores fabricantes do mercado</p>
         <div className="carousel-container reveal delay-100">
@@ -164,7 +160,7 @@ export default function LandingPage() {
             <div className="partner-logo"><img src={controlidLogo} alt="Control iD" /></div>
             <div className="partner-logo"><img src={niceLogo} alt="Nice" /></div>
             <div className="partner-logo"><img src={tplinkLogo} alt="Tplink" /></div>
-            {/* Bloco 2 (Cópia para efeito infinito) */}
+            {/* Bloco 2 */}
             <div className="partner-logo"><img src={intelbrasLogo} alt="Intelbras" /></div>
             <div className="partner-logo"><img src={furukawaLogo} alt="Furukawa" /></div>
             <div className="partner-logo"><img src={hikvisionLogo} alt="Hikvision" /></div>
@@ -176,11 +172,11 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* SESSÃO DE SOLUÇÕES */}
+      {/* SESSÃO DE SOLUÇÕES COM TEXTOS ATUALIZADOS */}
       <section id="solucoes" className="services-section">
         <div className="section-header reveal">
-          <h2>Nosso <span className="highlight">Portfólio</span></h2>
-          <p>Engenharia e tecnologia aplicadas para garantir a máxima segurança da sua operação.</p>
+          <h2>Engenharia de <span className="highlight">Vanguarda</span></h2>
+          <p>Soluções end-to-end com hardware de ponta e software analítico avançado para máxima proteção do seu patrimônio.</p>
         </div>
 
         <div className="services-grid">
@@ -244,7 +240,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* SESSÃO DE CONTATO (AGORA CONECTADA AO EMAILJS) */}
+      {/* SESSÃO DE CONTATO */}
       <section id="contato" className="contact-section">
         <div className="contact-container reveal">
           <div className="contact-info">
@@ -292,11 +288,11 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* SESSÃO FOOTER */}
+      {/* FOOTER COM TEXTO CORRIGIDO */}
       <footer className="footer-section">
         <div className="footer-bottom">
           <img src={logoImg} alt="GridTech" className="footer-logo" />
-          <p>&copy; {new Date().getFullYear()} GridTech Tecnologia. Todos os direitos reservados.</p>
+          <p>&copy; {new Date().getFullYear()} GridTech Tecnologia e Sistemas Elétricos ltda.<br/>Todos os direitos reservados. CNPJ: 45.477.979/0001-21</p>
         </div>
       </footer>
 
