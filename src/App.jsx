@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   FaNetworkWired, FaShieldAlt, FaVideo, FaFingerprint, FaCogs,
   FaWhatsapp, FaArrowRight, FaLaptopCode, FaCheckCircle, FaBars, FaTimes,
-  FaEnvelope, FaPhoneAlt
+  FaEnvelope, FaPhoneAlt, FaHeadset, FaFileContract
 } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 import './App.sass';
@@ -31,9 +31,7 @@ export default function LandingPage() {
   const [sendSuccess, setSendSuccess] = useState(false);
 
   useEffect(() => {
-    // Título atualizado focado no negócio principal
     document.title = "GridTech - Segurança Eletrônica e Infraestrutura";
-    
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -76,7 +74,7 @@ export default function LandingPage() {
       formData,           
       '39aYk_Y8QvGllfqbd' 
     )
-    .then((result) => {
+    .then(() => {
         setIsSending(false);
         setSendSuccess(true);
         setFormData({ from_name: '', from_email: '', phone: '', message: '' });
@@ -130,11 +128,9 @@ export default function LandingPage() {
       <header id="home" className="hero-section">
         <div className="grid-overlay"></div>
         <div className="hero-content reveal">
-          {/* 🔥 BADGE COM EFEITO NEON E TEXTO FOCADO 🔥 */}
-          <div className="badge">Engenharia Aplicada em Segurança Eletrônica</div>
-          
-          <h1>Tecnologia que <span className="highlight">Conecta e Protege</span> o seu Negócio.</h1>
-          <p>Soluções completas em segurança eletrônica, controle de acesso e automação para condomínios e empresas que exigem excelência.</p>
+          <div className="badge">Tecnologia Aplicada em Segurança Eletrônica</div>
+          <h1>Soluções que <span className="highlight">Conectam e Protegem</span> o seu Patrimônio.</h1>
+          <p>Gestão inteligente de segurança para condomínios e empresas que exigem transparência absoluta e <strong>alta disponibilidade</strong>.</p>
           
           <div className="hero-buttons">
             <button className="btn-primary" onClick={() => scrollTo('contato')}>
@@ -147,61 +143,73 @@ export default function LandingPage() {
         </div>
       </header>
 
-      {/* SESSÃO DE PARCEIROS COLORIDOS */}
+      {/* 🔥 BARRA DE IMPACTO (SEM TERMOS CONFUSOS) 🔥 */}
+      <section className="impact-bar reveal delay-100">
+        <div className="impact-container">
+          <div className="impact-item"><strong>500+</strong><span>Equipamentos Atendidos</span></div>
+          <div className="impact-item"><strong>99.9%</strong><span>Disponibilidade</span></div>
+          <div className="impact-item"><strong>100%</strong><span>Gestão Proativa</span></div>
+          <div className="impact-item"><strong>100%</strong><span>Laudos Transparentes</span></div>
+        </div>
+      </section>
+
+      {/* SESSÃO DE PARCEIROS */}
       <section className="partners-section">
-        <p className="partners-title reveal">Trabalhamos com os melhores fabricantes do mercado</p>
-        <div className="carousel-container reveal delay-100">
+        <p className="partners-title reveal">Trabalhamos com os líderes mundiais do setor</p>
+        <div className="carousel-container reveal delay-200">
           <div className="carousel-track">
-            {/* Bloco 1 */}
-            <div className="partner-logo"><img src={intelbrasLogo} alt="Intelbras" /></div>
-            <div className="partner-logo"><img src={furukawaLogo} alt="Furukawa" /></div>
-            <div className="partner-logo"><img src={hikvisionLogo} alt="Hikvision" /></div>
-            <div className="partner-logo"><img src={ppaLogo} alt="PPA" /></div>
-            <div className="partner-logo"><img src={controlidLogo} alt="Control iD" /></div>
-            <div className="partner-logo"><img src={niceLogo} alt="Nice" /></div>
-            <div className="partner-logo"><img src={tplinkLogo} alt="Tplink" /></div>
-            {/* Bloco 2 */}
-            <div className="partner-logo"><img src={intelbrasLogo} alt="Intelbras" /></div>
-            <div className="partner-logo"><img src={furukawaLogo} alt="Furukawa" /></div>
-            <div className="partner-logo"><img src={hikvisionLogo} alt="Hikvision" /></div>
-            <div className="partner-logo"><img src={ppaLogo} alt="PPA" /></div>
-            <div className="partner-logo"><img src={controlidLogo} alt="Control iD" /></div>
-            <div className="partner-logo"><img src={niceLogo} alt="Nice" /></div>
-            <div className="partner-logo"><img src={tplinkLogo} alt="Tplink" /></div>
+            {[intelbrasLogo, furukawaLogo, hikvisionLogo, ppaLogo, controlidLogo, niceLogo, tplinkLogo].map((logo, i) => (
+              <div key={i} className="partner-logo"><img src={logo} alt="Fabricante" /></div>
+            ))}
+            {[intelbrasLogo, furukawaLogo, hikvisionLogo, ppaLogo, controlidLogo, niceLogo, tplinkLogo].map((logo, i) => (
+              <div key={'dup'+i} className="partner-logo"><img src={logo} alt="Fabricante" /></div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* SESSÃO DE SOLUÇÕES COM TEXTOS ATUALIZADOS */}
+      {/* SESSÃO DE SOLUÇÕES (COM TEXTOS REALISTAS) */}
       <section id="solucoes" className="services-section">
         <div className="section-header reveal">
-          <h2>Engenharia de <span className="highlight">Vanguarda</span></h2>
-          <p>Soluções end-to-end com hardware de ponta e software analítico avançado para máxima proteção do seu patrimônio.</p>
+          <h2>Tecnologia de <span className="highlight">Vanguarda</span></h2>
+          <p>Soluções estruturadas com hardware de ponta para garantir a máxima proteção do seu ambiente.</p>
         </div>
 
         <div className="services-grid">
           <div className="service-card reveal delay-100">
-            <div className="icon-box"><FaVideo /></div>
+            <div className="card-header">
+              <div className="icon-box"><FaVideo /></div>
+              <div className="service-tag">Proteção Contínua</div>
+            </div>
             <h3>CFTV Inteligente</h3>
-            <p>Sistemas de câmeras HD/IP com Inteligência Artificial. Analíticos de vídeo avançados para detecção facial, cruzamento de linha e alerta de intrusão real.</p>
+            <p>Mais que imagens: câmeras com inteligência artificial, detecção de intrusão e analíticos avançados. Infraestrutura projetada para minimizar quedas.</p>
           </div>
           
           <div className="service-card reveal delay-200">
-            <div className="icon-box"><FaFingerprint /></div>
-            <h3>Controle de Acesso</h3>
-            <p>Sistemas de altíssima segurança para condomínios e empresas. Reconhecimento facial de alta velocidade, biometria digital, tags RFID, catracas e cancelas para controle veicular.</p>
+            <div className="card-header">
+              <div className="icon-box"><FaFingerprint /></div>
+              <div className="service-tag">Alta Circulação</div>
+            </div>
+            <h3>Controle de Acesso Avançado</h3>
+            <p>Biometria facial de alta precisão e catracas de acesso rápido. Gestão de moradores e visitantes com total rastreabilidade pelo sistema.</p>
           </div>
 
           <div className="service-card reveal delay-300">
-            <div className="icon-box"><FaCogs /></div>
-            <h3>Automação & Interfonia</h3>
-            <p>Automatizadores de portão ultrarrápidos e sistemas de interfonia digital IP com alta clareza de áudio e vídeo, além, de interfonia via celular para você não perder nenhuma chamada.</p>
+            <div className="card-header">
+              <div className="icon-box"><FaCogs /></div>
+              <div className="service-tag">Automação</div>
+            </div>
+            <h3>Portaria Conectada</h3>
+            <p>Sistemas de interfonia IP e automatizadores de portão de alto ciclo. Comunicação clara e rápida, reduzindo os custos de manutenção corretiva.</p>
           </div>
 
           <div className="service-card reveal delay-400">
-            <div className="icon-box"><FaNetworkWired /></div>
-            <h3>Infraestrutura de Redes</h3>
-            <p>A base de toda a segurança: cabeamento estruturado e fusão de fibra óptica para garantir que o seu sistema de câmeras e internet nunca caia.</p>
+            <div className="card-header">
+              <div className="icon-box"><FaNetworkWired /></div>
+              <div className="service-tag">Base do Sistema</div>
+            </div>
+            <h3>Cabeamento Estruturado</h3>
+            <p>A "espinha dorsal" de toda a segurança. Montagem de racks, roteamento e cabeamento robusto, com opções em fibra óptica sob demanda.</p>
           </div>
         </div>
       </section>
@@ -211,13 +219,13 @@ export default function LandingPage() {
         <div className="features-content">
           <div className="features-text reveal">
             <h2>Transparência e Controle em <span className="highlight">Tempo Real</span></h2>
-            <p>Diferente do mercado tradicional, a GridTech oferece a você controle total sobre os seus projetos e chamados através do nosso <strong>Portal do Cliente Exclusivo</strong>.</p>
+            <p>A GridTech elimina a "caixa preta" da manutenção. Com nosso <strong>Portal do Cliente Exclusivo</strong>, você acompanha a nossa entrega na palma da mão.</p>
             
             <ul className="features-list">
-              <li><FaCheckCircle className="check-icon" /> Acompanhe o cronograma da sua obra (Gantt).</li>
-              <li><FaCheckCircle className="check-icon" /> Aprove orçamentos com assinatura digital.</li>
-              <li><FaCheckCircle className="check-icon" /> Acompanhe chamados técnicos e SLAs ao vivo.</li>
-              <li><FaCheckCircle className="check-icon" /> Relatórios fotográficos e laudos em PDF.</li>
+              <li><FaCheckCircle className="check-icon" /> Dashboard com o status dos seus equipamentos.</li>
+              <li><FaCheckCircle className="check-icon" /> Acompanhamento de chamados e soluções ao vivo.</li>
+              <li><FaCheckCircle className="check-icon" /> Relatórios de preventivas com fotos e laudos técnicos.</li>
+              <li><FaCheckCircle className="check-icon" /> Gestão transparente de orçamentos e faturas.</li>
             </ul>
 
             <a href="https://web.gridtechtecnologia.com.br" className="btn-feature-login">
@@ -240,13 +248,18 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* SESSÃO DE CONTATO */}
+      {/* SESSÃO DE CONTATO (SEM AMARRAS DE 2H/24H) */}
       <section id="contato" className="contact-section">
         <div className="contact-container reveal">
           <div className="contact-info">
-            <h2>Fale com um <span className="highlight">Especialista</span></h2>
-            <p>Pronto para elevar o padrão da sua infraestrutura? Preencha os dados abaixo e nossa equipe comercial entrará em contato em até 24 horas.</p>
+            <h2>Fale com nossos <span className="highlight">Especialistas</span></h2>
+            <p>Pronto para elevar o padrão da sua infraestrutura? Preencha os dados e retornaremos com agilidade.</p>
             
+            <div className="sla-badge-box">
+              <div className="sla-badge"><FaHeadset /> Suporte Técnico Ágil e Prioritário</div>
+              <div className="sla-badge"><FaFileContract /> Orçamentos Rápidos e Detalhados</div>
+            </div>
+
             <div className="info-items">
               <div className="info-item">
                 <FaEnvelope className="info-icon" />
@@ -262,13 +275,13 @@ export default function LandingPage() {
           <div className="contact-form">
             {sendSuccess ? (
               <div className="success-message" style={{ background: '#10b981', color: 'white', padding: '20px', borderRadius: '12px', textAlign: 'center', fontWeight: 'bold' }}>
-                <FaCheckCircle style={{ fontSize: '30px', marginBottom: '10px' }} />
-                <br /> Mensagem enviada com sucesso! Nossa equipe entrará em contato em breve.
+                <FaCheckCircle style={{ fontSize: '30px', margin: '0 auto 10px auto', display: 'block' }} />
+                Mensagem enviada com sucesso! Nossa equipe entrará em contato em breve.
               </div>
             ) : (
               <form onSubmit={handleContato}>
                 <div className="input-group">
-                  <input type="text" name="from_name" placeholder="Seu Nome completo" value={formData.from_name} onChange={handleChange} required />
+                  <input type="text" name="from_name" placeholder="Nome / Condomínio" value={formData.from_name} onChange={handleChange} required />
                 </div>
                 <div className="input-group">
                   <input type="email" name="from_email" placeholder="E-mail corporativo" value={formData.from_email} onChange={handleChange} required />
@@ -277,10 +290,10 @@ export default function LandingPage() {
                   <input type="tel" name="phone" placeholder="Seu Telefone / WhatsApp" value={formData.phone} onChange={handleChange} required />
                 </div>
                 <div className="input-group">
-                  <textarea name="message" placeholder="Como podemos te ajudar? (Descreva brevemente sua necessidade)" rows="4" value={formData.message} onChange={handleChange} required></textarea>
+                  <textarea name="message" placeholder="Como podemos ajudar hoje?" rows="4" value={formData.message} onChange={handleChange} required></textarea>
                 </div>
                 <button type="submit" className="btn-submit" disabled={isSending}>
-                  {isSending ? 'Enviando aguarde...' : <>Enviar Mensagem <FaArrowRight /></>}
+                  {isSending ? 'Enviando aguarde...' : <>Solicitar Atendimento <FaArrowRight /></>}
                 </button>
               </form>
             )}
@@ -288,7 +301,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* FOOTER COM TEXTO CORRIGIDO */}
+      {/* FOOTER */}
       <footer className="footer-section">
         <div className="footer-bottom">
           <img src={logoImg} alt="GridTech" className="footer-logo" />
