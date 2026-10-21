@@ -17,6 +17,13 @@ import hikvisionLogo from './assets/partners/Hikvision.png';
 import intelbrasLogo from './assets/partners/Intelbras.png';
 import tplinkLogo from './assets/partners/Tplink.png';
 
+const FABRICANTES = [
+  { logo: intelbrasLogo, nome: 'Intelbras' }, { logo: furukawaLogo, nome: 'Furukawa' }, { logo: hikvisionLogo, nome: 'Hikvision' },
+  { logo: ppaLogo, nome: 'PPA' }, { logo: controlidLogo, nome: 'Control iD' }, { logo: niceLogo, nome: 'Nice' }, { logo: tplinkLogo, nome: 'TP-Link' }
+];
+
+const WHATSAPP = 'https://wa.me/5571992949859?text=' + encodeURIComponent('Olá! Vim pelo site da GridTech e gostaria de falar com um especialista.');
+
 export default function LandingPage() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -31,7 +38,7 @@ export default function LandingPage() {
   const [sendSuccess, setSendSuccess] = useState(false);
 
   useEffect(() => {
-    document.title = "GridTech - Segurança Eletrônica e Infraestrutura";
+    document.title = "GridTech - Segurança Eletrônica, CFTV e Controle de Acesso";
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -79,7 +86,7 @@ export default function LandingPage() {
         setSendSuccess(true);
         setFormData({ from_name: '', from_email: '', phone: '', message: '' });
         setTimeout(() => setSendSuccess(false), 5000);
-    }, (error) => {
+    }, () => {
         alert("Ocorreu um erro ao enviar sua mensagem. Por favor, tente pelo WhatsApp.");
         setIsSending(false);
     });
@@ -105,7 +112,7 @@ export default function LandingPage() {
             </a>
           </div>
 
-          <button className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
+          <button className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}>
             {menuOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
@@ -158,11 +165,12 @@ export default function LandingPage() {
         <p className="partners-title reveal">Trabalhamos com os líderes mundiais do setor</p>
         <div className="carousel-container reveal delay-200">
           <div className="carousel-track">
-            {[intelbrasLogo, furukawaLogo, hikvisionLogo, ppaLogo, controlidLogo, niceLogo, tplinkLogo].map((logo, i) => (
-              <div key={i} className="partner-logo"><img src={logo} alt="Fabricante" /></div>
+            {FABRICANTES.map((f, i) => (
+              <div key={i} className="partner-logo"><img src={f.logo} alt={f.nome} loading="lazy" /></div>
             ))}
-            {[intelbrasLogo, furukawaLogo, hikvisionLogo, ppaLogo, controlidLogo, niceLogo, tplinkLogo].map((logo, i) => (
-              <div key={'dup'+i} className="partner-logo"><img src={logo} alt="Fabricante" /></div>
+            {/* Cópia para o carrossel girar sem emenda (escondida dos leitores de tela) */}
+            {FABRICANTES.map((f, i) => (
+              <div key={'dup'+i} className="partner-logo" aria-hidden="true"><img src={f.logo} alt="" loading="lazy" /></div>
             ))}
           </div>
         </div>
@@ -225,6 +233,7 @@ export default function LandingPage() {
               <li><FaCheckCircle className="check-icon" /> Dashboard com o status dos seus equipamentos.</li>
               <li><FaCheckCircle className="check-icon" /> Acompanhamento de chamados e soluções ao vivo.</li>
               <li><FaCheckCircle className="check-icon" /> Relatórios de preventivas com fotos e laudos técnicos.</li>
+              <li><FaCheckCircle className="check-icon" /> Relatório mensal com a gravação dos DVRs conferida, câmera por câmera.</li>
               <li><FaCheckCircle className="check-icon" /> Gestão transparente de orçamentos e faturas.</li>
             </ul>
 
@@ -237,7 +246,7 @@ export default function LandingPage() {
               <div className="mockup-window">
                 <div className="mockup-header">
                   <span className="dot dot-red"></span><span className="dot dot-yellow"></span><span className="dot dot-green"></span>
-                  <div className="mockup-url">gridtech.dashboard.live</div>
+                  <div className="mockup-url">web.gridtechtecnologia.com.br</div>
                 </div>
                 <div className="mockup-body-real">
                   <img src={dashboardImg} alt="Painel GridTech Real" className="real-dashboard-img" />
@@ -263,11 +272,11 @@ export default function LandingPage() {
             <div className="info-items">
               <div className="info-item">
                 <FaEnvelope className="info-icon" />
-                <span>comercial@gridtechtecnologia.com.br</span>
+                <a href="mailto:comercial@gridtechtecnologia.com.br">comercial@gridtechtecnologia.com.br</a>
               </div>
               <div className="info-item">
                 <FaPhoneAlt className="info-icon" />
-                <span>(71) 99294-9859</span>
+                <a href="tel:+5571992949859">(71) 99294-9859</a>
               </div>
             </div>
           </div>
@@ -292,6 +301,7 @@ export default function LandingPage() {
                 <div className="input-group">
                   <textarea name="message" placeholder="Como podemos ajudar hoje?" rows="4" value={formData.message} onChange={handleChange} required></textarea>
                 </div>
+                <p className="form-lgpd">Usamos seus dados apenas para responder a este contato.</p>
                 <button type="submit" className="btn-submit" disabled={isSending}>
                   {isSending ? 'Enviando aguarde...' : <>Solicitar Atendimento <FaArrowRight /></>}
                 </button>
@@ -310,7 +320,7 @@ export default function LandingPage() {
       </footer>
 
       {/* BOTÃO FLUTUANTE */}
-      <a href="https://wa.me/5571992949859" target="_blank" rel="noreferrer" className="whatsapp-float">
+      <a href={WHATSAPP} target="_blank" rel="noreferrer" className="whatsapp-float" aria-label="Falar com a GridTech pelo WhatsApp" title="Falar pelo WhatsApp">
         <FaWhatsapp />
       </a>
     </div>
