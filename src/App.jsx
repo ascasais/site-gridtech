@@ -9,21 +9,6 @@ import './App.sass';
 import logoImg from './assets/logo.png'; 
 import dashboardImg from './assets/dashboard-real.png';
 
-// Fotos de obras feitas pela equipe (originais em /fotos, fora do build)
-import fotoRackCabeado from './assets/obras/rack-cabeado.webp';
-import fotoRackOrganizado from './assets/obras/rack-organizado.webp';
-import fotoCameraExterna from './assets/obras/camera-externa.webp';
-import fotoAcessoFacial from './assets/obras/acesso-facial.webp';
-import fotoTotemAcesso from './assets/obras/totem-acesso.webp';
-import fotoPatchPanel from './assets/obras/patch-panel.webp';
-import fotoSwitchDetalhe from './assets/obras/switch-detalhe.webp';
-import fotoRackDvr from './assets/obras/rack-dvr.webp';
-import fotoCabeamentoFeixes from './assets/obras/cabeamento-feixes.webp';
-import fotoRackFibra from './assets/obras/rack-fibra.webp';
-import fotoRackExterno from './assets/obras/rack-externo.webp';
-import fotoCentralAcesso from './assets/obras/central-acesso.webp';
-import fotoCameraJardim from './assets/obras/camera-jardim.webp';
-
 import ppaLogo from './assets/partners/PPA.png';
 import controlidLogo from './assets/partners/Controlid.png';
 import niceLogo from './assets/partners/Nice.png';
@@ -38,24 +23,19 @@ const FABRICANTES = [
 ];
 
 const SERVICOS = [
-  { foto: fotoCameraExterna, icone: FaVideo, titulo: 'CFTV', texto: 'Instalação, troca e manutenção de câmeras e gravadores. Todo mês conferimos a gravação câmera por câmera e mandamos o relatório.' },
-  { foto: fotoAcessoFacial, icone: FaFingerprint, titulo: 'Controle de acesso', texto: 'Leitores faciais, biometria, tags e catracas, com o cadastro de moradores e visitantes configurado e funcionando.' },
-  { foto: fotoTotemAcesso, icone: FaCogs, titulo: 'Portaria e portões', texto: 'Interfonia, totens de entrada e automatizadores de portão. Manutenção preventiva para o portão não parar na hora errada.' },
-  { foto: fotoRackOrganizado, icone: FaNetworkWired, titulo: 'Cabeamento e redes', texto: 'Montagem de rack, cabeamento identificado, switches e fibra óptica. A base para câmera e acesso não caírem.' }
+  { icone: FaVideo, titulo: 'CFTV', texto: 'Instalação, troca e manutenção de câmeras e gravadores. Todo mês conferimos a gravação câmera por câmera e mandamos o relatório.' },
+  { icone: FaFingerprint, titulo: 'Controle de acesso', texto: 'Leitores faciais, biometria, tags e catracas, com o cadastro de moradores e visitantes configurado e funcionando.' },
+  { icone: FaCogs, titulo: 'Portaria e portões', texto: 'Interfonia, totens de entrada e automatizadores de portão. Manutenção preventiva para o portão não parar na hora errada.' },
+  { icone: FaNetworkWired, titulo: 'Cabeamento e redes', texto: 'Montagem de rack, cabeamento identificado, switches e fibra óptica. A base para câmera e acesso não caírem.' }
 ];
 
-const OBRAS = [
-  { foto: fotoCabeamentoFeixes, legenda: 'Cabos separados por cor e amarrados em feixes' },
-  { foto: fotoPatchPanel, legenda: 'Patch panel com cabos identificados' },
-  { foto: fotoSwitchDetalhe, legenda: 'Switch e organizador de cabos' },
-  { foto: fotoRackFibra, legenda: 'Rack com fibra óptica e sobras organizadas' },
-  { foto: fotoRackDvr, legenda: 'Gravador e alimentação das câmeras' },
-  { foto: fotoRackExterno, legenda: 'Rack em área técnica' },
-  { foto: fotoCentralAcesso, legenda: 'Central de acesso com fonte e baterias' },
-  { foto: fotoCameraJardim, legenda: 'Câmera em área externa' }
+const PASSOS = [
+  { titulo: 'Visita preventiva todo mês', texto: 'Câmeras, gravadores, acesso e portões testados com checklist e fotos.' },
+  { titulo: 'Chamado quando precisar', texto: 'Aberto pelo portal ou pelo WhatsApp, com prioridade para quem tem contrato.' },
+  { titulo: 'Relatório e orçamento', texto: 'Você recebe o que foi feito e aprova qualquer troca de peça antes.' }
 ];
 
-const WHATSAPP ='https://wa.me/5571992949859?text=' + encodeURIComponent('Olá! Vim pelo site da GridTech e gostaria de falar com um especialista.');
+const WHATSAPP = 'https://wa.me/5571992949859?text=' + encodeURIComponent('Olá! Vim pelo site da GridTech e gostaria de falar com um especialista.');
 
 export default function LandingPage() {
   const [scrolled, setScrolled] = useState(false);
@@ -135,7 +115,6 @@ export default function LandingPage() {
           <div className="nav-links desktop-only">
             <button onClick={() => scrollTo('home')}>Início</button>
             <button onClick={() => scrollTo('solucoes')}>Serviços</button>
-            <button onClick={() => scrollTo('obras')}>Trabalhos</button>
             <button onClick={() => scrollTo('diferenciais')}>Portal</button>
             <button onClick={() => scrollTo('contato')}>Contato</button>
           </div>
@@ -156,7 +135,6 @@ export default function LandingPage() {
           <div className="mobile-menu">
             <button onClick={() => scrollTo('home')}>Início</button>
             <button onClick={() => scrollTo('solucoes')}>Serviços</button>
-            <button onClick={() => scrollTo('obras')}>Trabalhos</button>
             <button onClick={() => scrollTo('diferenciais')}>Portal</button>
             <button onClick={() => scrollTo('contato')}>Contato</button>
             <a href="https://web.gridtechtecnologia.com.br" className="btn-login-mobile">
@@ -178,15 +156,22 @@ export default function LandingPage() {
               <a className="btn-primary" href={WHATSAPP} target="_blank" rel="noreferrer">
                 <FaWhatsapp /> Falar no WhatsApp
               </a>
-              <button className="btn-secondary" onClick={() => scrollTo('obras')}>
-                Ver trabalhos feitos
+              <button className="btn-secondary" onClick={() => scrollTo('solucoes')}>
+                Ver serviços
               </button>
             </div>
           </div>
-          <figure className="hero-foto reveal delay-200">
-            <img src={fotoRackCabeado} alt="Rack de rede montado pela equipe GridTech, com cabos separados por cor e amarrados" fetchPriority="high" />
-            <figcaption>Rack montado pela nossa equipe</figcaption>
-          </figure>
+          <div className="hero-passos reveal delay-200">
+            <p className="hero-passos-titulo">Como funciona o contrato de manutenção</p>
+            <ol>
+              {PASSOS.map((p) => (
+                <li key={p.titulo}>
+                  <strong>{p.titulo}</strong>
+                  <span>{p.texto}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </header>
 
@@ -219,33 +204,17 @@ export default function LandingPage() {
       <section id="solucoes" className="services-section">
         <div className="section-header reveal">
           <h2>O que fazemos</h2>
-          <p>Instalação e manutenção. As fotos são de serviços da nossa equipe.</p>
+          <p>Instalação, manutenção preventiva e atendimento a chamados.</p>
         </div>
 
         <div className="services-grid">
           {SERVICOS.map((s, i) => (
             <article key={s.titulo} className={`service-card reveal delay-${(i + 1) * 100}`}>
-              <img className="service-foto" src={s.foto} alt={s.titulo} loading="lazy" />
               <div className="service-texto">
                 <h3><s.icone className="service-icone" /> {s.titulo}</h3>
                 <p>{s.texto}</p>
               </div>
             </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="obras" className="obras-section">
-        <div className="section-header reveal">
-          <h2>Trabalhos recentes</h2>
-          <p>Como deixamos os racks e as instalações depois do serviço.</p>
-        </div>
-        <div className="obras-grid">
-          {OBRAS.map((o) => (
-            <figure key={o.legenda} className="obra reveal">
-              <img src={o.foto} alt={o.legenda} loading="lazy" />
-              <figcaption>{o.legenda}</figcaption>
-            </figure>
           ))}
         </div>
       </section>

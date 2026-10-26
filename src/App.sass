@@ -109,7 +109,7 @@ $card-bg: rgba(30, 41, 59, 0.5)
       border-bottom: 1px solid rgba(255,255,255,0.05)
       text-decoration: none
 
-// HERO SECTION (texto + foto real de obra)
+// HERO SECTION (texto + como funciona)
 .hero-section
   position: relative
   padding: 130px 20px 70px
@@ -175,21 +175,52 @@ $card-bg: rgba(30, 41, 59, 0.5)
         &:hover
           background: rgba(255,255,255,0.06)
 
-  .hero-foto
-    margin: 0
-    border-radius: 12px
-    overflow: hidden
-    border: 1px solid rgba(255,255,255,0.08)
+  .hero-passos
     background: $bg-dark
-    img
-      display: block
-      width: 100%
-      aspect-ratio: 4 / 5
-      object-fit: cover
-    figcaption
+    border: 1px solid rgba(255,255,255,0.08)
+    border-radius: 12px
+    padding: 28px
+    .hero-passos-titulo
       font-size: 13px
+      font-weight: 700
       color: $text-muted
-      padding: 10px 14px
+      text-transform: uppercase
+      letter-spacing: 0.5px
+      margin: 0 0 18px
+    ol
+      list-style: none
+      margin: 0
+      padding: 0
+      counter-reset: passo
+    li
+      counter-increment: passo
+      position: relative
+      padding: 0 0 20px 48px
+      &:last-child
+        padding-bottom: 0
+      &::before
+        content: counter(passo)
+        position: absolute
+        left: 0
+        top: 0
+        width: 32px
+        height: 32px
+        border-radius: 50%
+        border: 1px solid $primary
+        color: $primary
+        font-weight: 700
+        font-size: 14px
+        display: flex
+        align-items: center
+        justify-content: center
+      strong
+        display: block
+        font-size: 16px
+        margin-bottom: 4px
+      span
+        color: $text-muted
+        font-size: 14px
+        line-height: 1.5
 
 // FAIXA DE COMPROMISSOS
 .impact-bar
@@ -296,13 +327,8 @@ $card-bg: rgba(30, 41, 59, 0.5)
       overflow: hidden
       display: flex
       flex-direction: column
-      .service-foto
-        display: block
-        width: 100%
-        aspect-ratio: 4 / 3
-        object-fit: cover
       .service-texto
-        padding: 20px 22px 24px
+        padding: 26px 24px
       h3
         margin: 0 0 8px 0
         font-size: 19px
@@ -317,33 +343,6 @@ $card-bg: rgba(30, 41, 59, 0.5)
         font-size: 14px
         line-height: 1.55
         margin: 0
-
-// TRABALHOS RECENTES (galeria)
-.obras-section
-  padding: 90px 20px
-  background: $bg-darker
-  .obras-grid
-    max-width: 1200px
-    margin: 0 auto
-    display: grid
-    grid-template-columns: repeat(4, minmax(0, 1fr))
-    gap: 16px
-  .obra
-    margin: 0
-    border-radius: 10px
-    overflow: hidden
-    background: $bg-dark
-    border: 1px solid rgba(255,255,255,0.06)
-    img
-      display: block
-      width: 100%
-      aspect-ratio: 1 / 1
-      object-fit: cover
-    figcaption
-      font-size: 13px
-      color: $text-muted
-      padding: 10px 12px
-      line-height: 1.4
 
 // FEATURES (MOCKUP)
 .features-section
@@ -604,8 +603,6 @@ $card-bg: rgba(30, 41, 59, 0.5)
 // RESPONSIVO E TRAVA DE MOBILE
 // ==========================================
 @media (max-width: 1000px) and (min-width: 769px)
-  .obras-section .obras-grid
-    grid-template-columns: repeat(3, minmax(0, 1fr))
   .impact-bar .impact-container
     grid-template-columns: repeat(2, minmax(0, 1fr))
 
@@ -628,15 +625,8 @@ $card-bg: rgba(30, 41, 59, 0.5)
   .hero-section .hero-content .hero-buttons a, .hero-section .hero-content .hero-buttons button
     width: 100%
     justify-content: center
-  .hero-section .hero-foto img
-    aspect-ratio: 4 / 3
   .impact-bar .impact-container
     grid-template-columns: minmax(0, 1fr)
-    gap: 10px
-  .obras-section
-    padding: 60px 16px
-  .obras-section .obras-grid
-    grid-template-columns: repeat(2, minmax(0, 1fr))
     gap: 10px
   
   .features-section .features-content
