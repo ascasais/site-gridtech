@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# fotos originais (nao vao para o site)
+fotos/
