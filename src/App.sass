@@ -109,124 +109,108 @@ $card-bg: rgba(30, 41, 59, 0.5)
       border-bottom: 1px solid rgba(255,255,255,0.05)
       text-decoration: none
 
-// HERO SECTION
+// HERO SECTION (texto + foto real de obra)
 .hero-section
   position: relative
-  min-height: 100vh
-  display: flex
-  align-items: center
-  justify-content: center
-  padding: 0 20px
-  
-  .grid-overlay
-    position: absolute
-    inset: 0
-    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)
-    background-size: 40px 40px
-    z-index: 0
-    &::after
-      content: ''
-      position: absolute
-      inset: 0
-      background: radial-gradient(circle at center, transparent 0%, $bg-darker 80%)
+  padding: 130px 20px 70px
+  background: $bg-darker
+
+  .hero-grade
+    max-width: 1200px
+    margin: 0 auto
+    display: grid
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr)
+    gap: 56px
+    align-items: center
 
   .hero-content
-    position: relative
-    z-index: 1
-    max-width: 800px
-    width: 100%
-    text-align: center
-    margin-top: 60px
-
-    .badge
-      display: inline-block
-      background: rgba(59, 130, 246, 0.1)
-      color: $primary
-      padding: 8px 20px
-      border-radius: 30px
-      font-size: 12px
-      font-weight: bold
-      letter-spacing: 1px
-      text-transform: uppercase
-      border: 1px solid rgba(59, 130, 246, 0.4)
-      box-shadow: 0 0 15px rgba(59, 130, 246, 0.3)
-      margin-bottom: 25px
+    .hero-local
+      font-size: 13px
+      font-weight: 600
+      color: $text-muted
+      margin: 0 0 14px
+      letter-spacing: 0.5px
 
     h1
-      font-size: 56px
+      font-size: 44px
       font-weight: 800
-      line-height: 1.1
+      line-height: 1.15
       margin: 0 0 20px 0
-      .highlight
-        background: linear-gradient(135deg, $primary, $accent)
-        -webkit-background-clip: text
-        -webkit-text-fill-color: transparent
+      letter-spacing: -0.5px
 
     p
       font-size: 18px
       color: $text-muted
-      margin: 0 0 40px 0
+      margin: 0 0 32px 0
       line-height: 1.6
 
     .hero-buttons
       display: flex
-      gap: 15px
-      justify-content: center
-      
-      button
-        padding: 15px 30px
+      gap: 12px
+      flex-wrap: wrap
+
+      a, button
+        padding: 14px 24px
         border-radius: 8px
-        font-weight: bold
+        font-weight: 700
         font-size: 16px
         cursor: pointer
-        display: flex
+        display: inline-flex
         align-items: center
         gap: 10px
-        transition: all 0.3s
-      
+        text-decoration: none
+        transition: background 0.2s
+
       .btn-primary
-        background: $primary
+        background: #16a34a
         color: white
         border: none
         &:hover
-          background: $primary-hover
-          transform: translateY(-2px)
-          box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3)
-          
-      .btn-secondary
-        background: rgba(255,255,255,0.05)
-        color: white
-        border: 1px solid rgba(255,255,255,0.1)
-        &:hover
-          background: rgba(255,255,255,0.1)
+          background: #15803d
 
-// BARRA DE IMPACTO
+      .btn-secondary
+        background: transparent
+        color: white
+        border: 1px solid rgba(255,255,255,0.25)
+        &:hover
+          background: rgba(255,255,255,0.06)
+
+  .hero-foto
+    margin: 0
+    border-radius: 12px
+    overflow: hidden
+    border: 1px solid rgba(255,255,255,0.08)
+    background: $bg-dark
+    img
+      display: block
+      width: 100%
+      aspect-ratio: 4 / 5
+      object-fit: cover
+    figcaption
+      font-size: 13px
+      color: $text-muted
+      padding: 10px 14px
+
+// FAIXA DE COMPROMISSOS
 .impact-bar
   background: $bg-dark
-  padding: 40px 20px
-  border-top: 1px solid rgba(255,255,255,0.05)
-  border-bottom: 1px solid rgba(255,255,255,0.05)
+  padding: 22px 20px
+  border-top: 1px solid rgba(255,255,255,0.06)
+  border-bottom: 1px solid rgba(255,255,255,0.06)
   .impact-container
     max-width: 1200px
     margin: 0 auto
-    display: flex
-    justify-content: space-around
-    flex-wrap: wrap
-    gap: 30px
-    .impact-item
-      text-align: center
-      strong
-        display: block
-        font-size: 36px
-        font-weight: 900
-        color: $primary
-        margin-bottom: 5px
-      span
-        font-size: 12px
-        text-transform: uppercase
-        color: $text-muted
-        letter-spacing: 1px
-        font-weight: bold
+    padding: 0
+    list-style: none
+    display: grid
+    grid-template-columns: repeat(4, minmax(0, 1fr))
+    gap: 16px
+    li
+      font-size: 14px
+      font-weight: 600
+      color: $text-light
+      padding-left: 14px
+      border-left: 3px solid $primary
 
 // CARROSSEL
 .partners-section
@@ -286,9 +270,9 @@ $card-bg: rgba(30, 41, 59, 0.5)
 // SERVICES
 .section-header
   text-align: center
-  margin-bottom: 60px
+  margin-bottom: 44px
   h2
-    font-size: 36px
+    font-size: 32px
     margin: 0 0 10px 0
     .highlight
       color: $primary
@@ -307,56 +291,59 @@ $card-bg: rgba(30, 41, 59, 0.5)
     gap: 30px
     .service-card
       background: $card-bg
-      border: 1px solid rgba(255,255,255,0.05)
-      padding: 35px 30px
-      border-radius: 16px
-      transition: transform 0.3s, border-color 0.3s
+      border: 1px solid rgba(255,255,255,0.06)
+      border-radius: 12px
+      overflow: hidden
       display: flex
       flex-direction: column
-      align-items: flex-start
-      &:hover
-        transform: translateY(-5px)
-        border-color: $primary
-      
-      // 🔥 NOVA DIV QUE ALINHA ÍCONE E TAG LADO A LADO 🔥
-      .card-header
-        display: flex
-        align-items: center
-        gap: 15px
-        margin-bottom: 20px
+      .service-foto
+        display: block
         width: 100%
-
-      .service-tag
-        display: inline-block
-        background: rgba(4, 50, 34, 0.25) // <- Fundo clareado aqui (era 0.15)
-        color: $accent
-        font-size: 10px
-        padding: 6px 12px
-        border-radius: 12px
-        font-weight: bold
-        text-transform: uppercase
-        border: 1px solid rgba(16, 185, 129, 0.4) // <- Borda também um pouco mais forte
-
-      .icon-box
-        width: 50px
-        height: 50px
-        background: rgba(59, 130, 246, 0.1)
-        color: $primary
-        border-radius: 12px
+        aspect-ratio: 4 / 3
+        object-fit: cover
+      .service-texto
+        padding: 20px 22px 24px
+      h3
+        margin: 0 0 8px 0
+        font-size: 19px
         display: flex
         align-items: center
-        justify-content: center
-        font-size: 24px
-        flex-shrink: 0 // Evita que o ícone esmague se o texto for longo
-
-      h3
-        margin: 0 0 10px 0
-        font-size: 20px
+        gap: 10px
+      .service-icone
+        color: $primary
+        font-size: 18px
       p
         color: $text-muted
         font-size: 14px
-        line-height: 1.5
+        line-height: 1.55
         margin: 0
+
+// TRABALHOS RECENTES (galeria)
+.obras-section
+  padding: 90px 20px
+  background: $bg-darker
+  .obras-grid
+    max-width: 1200px
+    margin: 0 auto
+    display: grid
+    grid-template-columns: repeat(4, minmax(0, 1fr))
+    gap: 16px
+  .obra
+    margin: 0
+    border-radius: 10px
+    overflow: hidden
+    background: $bg-dark
+    border: 1px solid rgba(255,255,255,0.06)
+    img
+      display: block
+      width: 100%
+      aspect-ratio: 1 / 1
+      object-fit: cover
+    figcaption
+      font-size: 13px
+      color: $text-muted
+      padding: 10px 12px
+      line-height: 1.4
 
 // FEATURES (MOCKUP)
 .features-section
@@ -616,6 +603,12 @@ $card-bg: rgba(30, 41, 59, 0.5)
 // ==========================================
 // RESPONSIVO E TRAVA DE MOBILE
 // ==========================================
+@media (max-width: 1000px) and (min-width: 769px)
+  .obras-section .obras-grid
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+  .impact-bar .impact-container
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+
 @media (max-width: 768px)
   .desktop-only
     display: none !important
@@ -623,10 +616,28 @@ $card-bg: rgba(30, 41, 59, 0.5)
     display: block
   .navbar .mobile-menu
     display: flex
+  .hero-section
+    padding: 100px 16px 40px
+  .hero-section .hero-grade
+    grid-template-columns: minmax(0, 1fr)
+    gap: 28px
   .hero-section .hero-content h1
-    font-size: 40px
-  .hero-section .hero-buttons
-    flex-direction: column
+    font-size: 30px
+  .hero-section .hero-content p
+    font-size: 16px
+  .hero-section .hero-content .hero-buttons a, .hero-section .hero-content .hero-buttons button
+    width: 100%
+    justify-content: center
+  .hero-section .hero-foto img
+    aspect-ratio: 4 / 3
+  .impact-bar .impact-container
+    grid-template-columns: minmax(0, 1fr)
+    gap: 10px
+  .obras-section
+    padding: 60px 16px
+  .obras-section .obras-grid
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+    gap: 10px
   
   .features-section .features-content
     flex-direction: column

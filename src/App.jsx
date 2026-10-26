@@ -1,13 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  FaNetworkWired, FaShieldAlt, FaVideo, FaFingerprint, FaCogs,
+  FaNetworkWired, FaVideo, FaFingerprint, FaCogs,
   FaWhatsapp, FaArrowRight, FaLaptopCode, FaCheckCircle, FaBars, FaTimes,
   FaEnvelope, FaPhoneAlt, FaHeadset, FaFileContract
 } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 import './App.sass';
 import logoImg from './assets/logo.png'; 
-import dashboardImg from './assets/dashboard-real.png'; 
+import dashboardImg from './assets/dashboard-real.png';
+
+// Fotos de obras feitas pela equipe (originais em /fotos, fora do build)
+import fotoRackCabeado from './assets/obras/rack-cabeado.webp';
+import fotoRackOrganizado from './assets/obras/rack-organizado.webp';
+import fotoCameraExterna from './assets/obras/camera-externa.webp';
+import fotoAcessoFacial from './assets/obras/acesso-facial.webp';
+import fotoTotemAcesso from './assets/obras/totem-acesso.webp';
+import fotoPatchPanel from './assets/obras/patch-panel.webp';
+import fotoSwitchDetalhe from './assets/obras/switch-detalhe.webp';
+import fotoRackDvr from './assets/obras/rack-dvr.webp';
+import fotoCabeamentoFeixes from './assets/obras/cabeamento-feixes.webp';
+import fotoRackFibra from './assets/obras/rack-fibra.webp';
+import fotoRackExterno from './assets/obras/rack-externo.webp';
+import fotoCentralAcesso from './assets/obras/central-acesso.webp';
+import fotoCameraJardim from './assets/obras/camera-jardim.webp';
 
 import ppaLogo from './assets/partners/PPA.png';
 import controlidLogo from './assets/partners/Controlid.png';
@@ -22,7 +37,25 @@ const FABRICANTES = [
   { logo: ppaLogo, nome: 'PPA' }, { logo: controlidLogo, nome: 'Control iD' }, { logo: niceLogo, nome: 'Nice' }, { logo: tplinkLogo, nome: 'TP-Link' }
 ];
 
-const WHATSAPP = 'https://wa.me/5571992949859?text=' + encodeURIComponent('Olá! Vim pelo site da GridTech e gostaria de falar com um especialista.');
+const SERVICOS = [
+  { foto: fotoCameraExterna, icone: FaVideo, titulo: 'CFTV', texto: 'Instalação, troca e manutenção de câmeras e gravadores. Todo mês conferimos a gravação câmera por câmera e mandamos o relatório.' },
+  { foto: fotoAcessoFacial, icone: FaFingerprint, titulo: 'Controle de acesso', texto: 'Leitores faciais, biometria, tags e catracas, com o cadastro de moradores e visitantes configurado e funcionando.' },
+  { foto: fotoTotemAcesso, icone: FaCogs, titulo: 'Portaria e portões', texto: 'Interfonia, totens de entrada e automatizadores de portão. Manutenção preventiva para o portão não parar na hora errada.' },
+  { foto: fotoRackOrganizado, icone: FaNetworkWired, titulo: 'Cabeamento e redes', texto: 'Montagem de rack, cabeamento identificado, switches e fibra óptica. A base para câmera e acesso não caírem.' }
+];
+
+const OBRAS = [
+  { foto: fotoCabeamentoFeixes, legenda: 'Cabos separados por cor e amarrados em feixes' },
+  { foto: fotoPatchPanel, legenda: 'Patch panel com cabos identificados' },
+  { foto: fotoSwitchDetalhe, legenda: 'Switch e organizador de cabos' },
+  { foto: fotoRackFibra, legenda: 'Rack com fibra óptica e sobras organizadas' },
+  { foto: fotoRackDvr, legenda: 'Gravador e alimentação das câmeras' },
+  { foto: fotoRackExterno, legenda: 'Rack em área técnica' },
+  { foto: fotoCentralAcesso, legenda: 'Central de acesso com fonte e baterias' },
+  { foto: fotoCameraJardim, legenda: 'Câmera em área externa' }
+];
+
+const WHATSAPP ='https://wa.me/5571992949859?text=' + encodeURIComponent('Olá! Vim pelo site da GridTech e gostaria de falar com um especialista.');
 
 export default function LandingPage() {
   const [scrolled, setScrolled] = useState(false);
@@ -101,8 +134,9 @@ export default function LandingPage() {
           
           <div className="nav-links desktop-only">
             <button onClick={() => scrollTo('home')}>Início</button>
-            <button onClick={() => scrollTo('solucoes')}>Soluções</button>
-            <button onClick={() => scrollTo('diferenciais')}>Diferenciais</button>
+            <button onClick={() => scrollTo('solucoes')}>Serviços</button>
+            <button onClick={() => scrollTo('obras')}>Trabalhos</button>
+            <button onClick={() => scrollTo('diferenciais')}>Portal</button>
             <button onClick={() => scrollTo('contato')}>Contato</button>
           </div>
 
@@ -121,8 +155,9 @@ export default function LandingPage() {
         {menuOpen && (
           <div className="mobile-menu">
             <button onClick={() => scrollTo('home')}>Início</button>
-            <button onClick={() => scrollTo('solucoes')}>Soluções</button>
-            <button onClick={() => scrollTo('diferenciais')}>Diferenciais</button>
+            <button onClick={() => scrollTo('solucoes')}>Serviços</button>
+            <button onClick={() => scrollTo('obras')}>Trabalhos</button>
+            <button onClick={() => scrollTo('diferenciais')}>Portal</button>
             <button onClick={() => scrollTo('contato')}>Contato</button>
             <a href="https://web.gridtechtecnologia.com.br" className="btn-login-mobile">
               <FaLaptopCode /> Área do Cliente
@@ -133,36 +168,40 @@ export default function LandingPage() {
 
       {/* SESSÃO HERO */}
       <header id="home" className="hero-section">
-        <div className="grid-overlay"></div>
-        <div className="hero-content reveal">
-          <div className="badge">Tecnologia Aplicada em Segurança Eletrônica</div>
-          <h1>Soluções que <span className="highlight">Conectam e Protegem</span> o seu Patrimônio.</h1>
-          <p>Gestão inteligente de segurança para condomínios e empresas que exigem transparência absoluta e <strong>alta disponibilidade</strong>.</p>
-          
-          <div className="hero-buttons">
-            <button className="btn-primary" onClick={() => scrollTo('contato')}>
-              Fale com um Especialista <FaArrowRight />
-            </button>
-            <button className="btn-secondary" onClick={() => scrollTo('solucoes')}>
-              Conheça nossas Soluções
-            </button>
+        <div className="hero-grade">
+          <div className="hero-content reveal">
+            <p className="hero-local">Salvador e Região Metropolitana</p>
+            <h1>Manutenção de CFTV, controle de acesso e redes para condomínios e empresas.</h1>
+            <p>Instalamos, cuidamos e registramos tudo: cada visita gera relatório com fotos, e você acompanha os chamados pelo portal.</p>
+
+            <div className="hero-buttons">
+              <a className="btn-primary" href={WHATSAPP} target="_blank" rel="noreferrer">
+                <FaWhatsapp /> Falar no WhatsApp
+              </a>
+              <button className="btn-secondary" onClick={() => scrollTo('obras')}>
+                Ver trabalhos feitos
+              </button>
+            </div>
           </div>
+          <figure className="hero-foto reveal delay-200">
+            <img src={fotoRackCabeado} alt="Rack de rede montado pela equipe GridTech, com cabos separados por cor e amarrados" fetchPriority="high" />
+            <figcaption>Rack montado pela nossa equipe</figcaption>
+          </figure>
         </div>
       </header>
 
-      {/* 🔥 BARRA DE IMPACTO (SEM TERMOS CONFUSOS) 🔥 */}
-      <section className="impact-bar reveal delay-100">
-        <div className="impact-container">
-          <div className="impact-item"><strong>500+</strong><span>Equipamentos Atendidos</span></div>
-          <div className="impact-item"><strong>99.9%</strong><span>Disponibilidade</span></div>
-          <div className="impact-item"><strong>100%</strong><span>Gestão Proativa</span></div>
-          <div className="impact-item"><strong>100%</strong><span>Laudos Transparentes</span></div>
-        </div>
+      <section className="impact-bar">
+        <ul className="impact-container">
+          <li>Relatório com fotos em cada preventiva</li>
+          <li>Gravação dos DVRs conferida todo mês</li>
+          <li>Chamados acompanhados pelo portal</li>
+          <li>Orçamento detalhado antes de qualquer troca</li>
+        </ul>
       </section>
 
       {/* SESSÃO DE PARCEIROS */}
       <section className="partners-section">
-        <p className="partners-title reveal">Trabalhamos com os líderes mundiais do setor</p>
+        <p className="partners-title reveal">Marcas que instalamos e mantemos</p>
         <div className="carousel-container reveal delay-200">
           <div className="carousel-track">
             {FABRICANTES.map((f, i) => (
@@ -176,49 +215,38 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* SESSÃO DE SOLUÇÕES (COM TEXTOS REALISTAS) */}
+      {/* O QUE FAZEMOS */}
       <section id="solucoes" className="services-section">
         <div className="section-header reveal">
-          <h2>Tecnologia de <span className="highlight">Vanguarda</span></h2>
-          <p>Soluções estruturadas com hardware de ponta para garantir a máxima proteção do seu ambiente.</p>
+          <h2>O que fazemos</h2>
+          <p>Instalação e manutenção. As fotos são de serviços da nossa equipe.</p>
         </div>
 
         <div className="services-grid">
-          <div className="service-card reveal delay-100">
-            <div className="card-header">
-              <div className="icon-box"><FaVideo /></div>
-              <div className="service-tag">Proteção Contínua</div>
-            </div>
-            <h3>CFTV Inteligente</h3>
-            <p>Mais que imagens: câmeras com inteligência artificial, detecção de intrusão e analíticos avançados. Infraestrutura projetada para minimizar quedas.</p>
-          </div>
-          
-          <div className="service-card reveal delay-200">
-            <div className="card-header">
-              <div className="icon-box"><FaFingerprint /></div>
-              <div className="service-tag">Alta Circulação</div>
-            </div>
-            <h3>Controle de Acesso Avançado</h3>
-            <p>Biometria facial de alta precisão e catracas de acesso rápido. Gestão de moradores e visitantes com total rastreabilidade pelo sistema.</p>
-          </div>
+          {SERVICOS.map((s, i) => (
+            <article key={s.titulo} className={`service-card reveal delay-${(i + 1) * 100}`}>
+              <img className="service-foto" src={s.foto} alt={s.titulo} loading="lazy" />
+              <div className="service-texto">
+                <h3><s.icone className="service-icone" /> {s.titulo}</h3>
+                <p>{s.texto}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
 
-          <div className="service-card reveal delay-300">
-            <div className="card-header">
-              <div className="icon-box"><FaCogs /></div>
-              <div className="service-tag">Automação</div>
-            </div>
-            <h3>Portaria Conectada</h3>
-            <p>Sistemas de interfonia IP e automatizadores de portão de alto ciclo. Comunicação clara e rápida, reduzindo os custos de manutenção corretiva.</p>
-          </div>
-
-          <div className="service-card reveal delay-400">
-            <div className="card-header">
-              <div className="icon-box"><FaNetworkWired /></div>
-              <div className="service-tag">Base do Sistema</div>
-            </div>
-            <h3>Cabeamento Estruturado</h3>
-            <p>A "espinha dorsal" de toda a segurança. Montagem de racks, roteamento e cabeamento robusto, com opções em fibra óptica sob demanda.</p>
-          </div>
+      <section id="obras" className="obras-section">
+        <div className="section-header reveal">
+          <h2>Trabalhos recentes</h2>
+          <p>Como deixamos os racks e as instalações depois do serviço.</p>
+        </div>
+        <div className="obras-grid">
+          {OBRAS.map((o) => (
+            <figure key={o.legenda} className="obra reveal">
+              <img src={o.foto} alt={o.legenda} loading="lazy" />
+              <figcaption>{o.legenda}</figcaption>
+            </figure>
+          ))}
         </div>
       </section>
 
@@ -226,8 +254,8 @@ export default function LandingPage() {
       <section id="diferenciais" className="features-section">
         <div className="features-content">
           <div className="features-text reveal">
-            <h2>Transparência e Controle em <span className="highlight">Tempo Real</span></h2>
-            <p>A GridTech elimina a "caixa preta" da manutenção. Com nosso <strong>Portal do Cliente Exclusivo</strong>, você acompanha a nossa entrega na palma da mão.</p>
+            <h2>Acompanhe tudo pelo portal</h2>
+            <p>O síndico ou o gestor entra no portal e vê o que foi feito, quando e por quem, sem precisar ligar para perguntar.</p>
             
             <ul className="features-list">
               <li><FaCheckCircle className="check-icon" /> Dashboard com o status dos seus equipamentos.</li>
@@ -238,7 +266,7 @@ export default function LandingPage() {
             </ul>
 
             <a href="https://web.gridtechtecnologia.com.br" className="btn-feature-login">
-              Acessar Meu Portal Agora <FaArrowRight />
+              Entrar no portal <FaArrowRight />
             </a>
           </div>
           <div className="features-image reveal delay-200">
@@ -261,12 +289,12 @@ export default function LandingPage() {
       <section id="contato" className="contact-section">
         <div className="contact-container reveal">
           <div className="contact-info">
-            <h2>Fale com nossos <span className="highlight">Especialistas</span></h2>
-            <p>Pronto para elevar o padrão da sua infraestrutura? Preencha os dados e retornaremos com agilidade.</p>
+            <h2>Fale com a gente</h2>
+            <p>Conte o que está precisando, seja uma visita técnica, um orçamento ou um contrato de manutenção. Respondemos pelo WhatsApp ou por e-mail.</p>
             
             <div className="sla-badge-box">
-              <div className="sla-badge"><FaHeadset /> Suporte Técnico Ágil e Prioritário</div>
-              <div className="sla-badge"><FaFileContract /> Orçamentos Rápidos e Detalhados</div>
+              <div className="sla-badge"><FaHeadset /> Atendimento a chamados de contrato com prioridade</div>
+              <div className="sla-badge"><FaFileContract /> Orçamento com item, quantidade e valor</div>
             </div>
 
             <div className="info-items">
@@ -303,7 +331,7 @@ export default function LandingPage() {
                 </div>
                 <p className="form-lgpd">Usamos seus dados apenas para responder a este contato.</p>
                 <button type="submit" className="btn-submit" disabled={isSending}>
-                  {isSending ? 'Enviando aguarde...' : <>Solicitar Atendimento <FaArrowRight /></>}
+                  {isSending ? 'Enviando aguarde...' : <>Enviar mensagem <FaArrowRight /></>}
                 </button>
               </form>
             )}
