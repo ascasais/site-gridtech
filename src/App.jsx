@@ -148,7 +148,6 @@ export default function LandingPage() {
       <header id="home" className="hero-section">
         <div className="hero-grade">
           <div className="hero-content reveal">
-            <p className="hero-local">Salvador e Região Metropolitana</p>
             <h1>Manutenção de CFTV, controle de acesso e redes para condomínios e empresas.</h1>
             <p>Instalamos, cuidamos e registramos tudo: cada visita gera relatório com fotos, e você acompanha os chamados pelo portal.</p>
 
