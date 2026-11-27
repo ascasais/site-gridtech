@@ -63,6 +63,7 @@
   #servicos .frame { align-self: stretch; }
   #portal .frame { aspect-ratio: 1 / 1; }
   #orcamento .frame { align-self: stretch; }
+  .close__media img { object-position: 50% 12%; }
   #orcamento .field:has(textarea) { grid-column: 1 / -1; }
   @media (max-width: 1023px) { #orcamento .frame { aspect-ratio: 4 / 3; } }
   @media (min-width: 1024px) and (max-width: 1279px) { #contrato { --h: 2 } }
@@ -99,7 +100,8 @@
      deal: hero split, nav nav-centre, close close-photo, footer footer-columns (footer-visit dealt again: a GridTech não recebe clientes na sede),
            rhythm surface-pairs (#portal), buttons arrow, mark: o logo da empresa
      palette: as cores da própria marca (start.mjs brand), fonte archivo
-     moments: picture-develops na foto do rack pronto (#obras): a obra aparece como uma foto sendo revelada -->
+     moments: picture-develops na foto do hall com catracas (#obras)
+     fotos: Unsplash (licença livre), substitutas até haver fotos próprias tratadas -->
 
 <header class="nav nav--centre">
   <div class="wrap nav__bar">
@@ -138,7 +140,7 @@
         </dl>
       </div>
       <div class="hero__media span-6 start-7">
-        <img src="/img/hero-rack.jpg" alt="Rack montado pela GridTech com patch panels, cabos azuis identificados e switches" style="--ly-pos: 50% 45%" fetchpriority="high" width="1125" height="1500">
+        <img src="/img/predio-hero.jpg" alt="Prédio residencial moderno com varandas e jardins, visto de baixo" style="--ly-pos: 50% 50%" fetchpriority="high" width="1400" height="1400">
       </div>
     </div></div>
   </section>
@@ -159,7 +161,7 @@
         </ul>
       </div>
       <div class="frame frame--photo span-6 start-7">
-        <img class="frame__img" src="/img/acesso-facial.jpg" alt="Leitor facial instalado na entrada de pedestres de um condomínio" loading="lazy" width="787" height="1400" style="object-position: 50% 40%">
+        <img class="frame__img" src="/img/tecnico-acesso.jpg" alt="Técnico de capacete instalando um leitor de acesso em uma porta de vidro" loading="lazy" width="1400" height="764" style="object-position: 45% 50%">
       </div>
     </div>
   </section>
@@ -175,19 +177,19 @@
           <span class="step-num">1</span>
           <h3>Conferimos tudo todo mês</h3>
           <p>Câmeras, gravação, acesso e portões testados com checklist e fotos.</p>
-          <div class="panel"><img class="frame__img" src="/img/camera-externa.jpg" alt="Câmera externa revisada na área comum de um condomínio" loading="lazy"></div>
+          <div class="panel"><img class="frame__img" src="/img/camera-teto.jpg" alt="Câmera de segurança presa ao teto em uma área comum" loading="lazy"></div>
         </article>
         <article class="card card--row span-4">
           <span class="step-num">2</span>
           <h3>Atendemos o chamado</h3>
           <p>Aberto pelo portal ou pelo WhatsApp, com prioridade para quem tem contrato.</p>
-          <div class="panel"><img class="frame__img" src="/img/totem-acesso.jpg" alt="Totem de acesso de veículos na entrada de um condomínio" loading="lazy"></div>
+          <div class="panel"><img class="frame__img" src="/img/tecnico-painel.jpg" alt="Técnico medindo com multímetro dentro de um quadro elétrico" loading="lazy" style="object-position: 50% 30%"></div>
         </article>
         <article class="card card--row span-4">
           <span class="step-num">3</span>
           <h3>Enviamos o relatório</h3>
           <p>O síndico vê o que foi feito e aprova qualquer troca de peça antes.</p>
-          <div class="panel"><img class="frame__img" src="/img/rack-detalhe.jpg" alt="Detalhe de cabos de rede organizados no switch de um rack" loading="lazy"></div>
+          <div class="panel"><img class="frame__img" src="/img/leitor-cartao.jpg" alt="Leitor de cartão de acesso ao lado de uma porta em um corredor" loading="lazy"></div>
         </article>
       </div>
     </div>
@@ -239,12 +241,12 @@
     <div class="wrap grid grid--top">
       <div class="span-5">
         <div class="section-head">
-          <h2 id="obras-h">Rack e cabeamento montados do zero</h2>
-          <p>Do rack vazio ao gravador ligado, com cabos identificados. Instalamos Intelbras, Hikvision, Control iD, Nice, PPA, Furukawa e TP-Link.</p>
+          <h2 id="obras-h">Instalação em prédios novos e reformas</h2>
+          <p>Câmeras, catracas, controle de acesso e a rede que liga tudo, do projeto à entrega. Instalamos Intelbras, Hikvision, Control iD, Nice, PPA, Furukawa e TP-Link.</p>
         </div>
-        <figure class="pair__img"><img src="/img/rack-inicio.jpg" alt="Rack vazio no início da montagem, com a maleta de ferramentas no chão" loading="lazy" width="1080" height="1350" style="object-position: 50% 60%"></figure>
+        <figure class="pair__img"><img src="/img/catracas.jpg" alt="Catracas com leitores de acesso em uma entrada de pedestres" loading="lazy" width="1200" height="800"></figure>
       </div>
-      <figure class="develop span-6 start-7" data-moment="picture-develops"><img src="/img/rack-pronto.jpg" alt="O mesmo rack pronto, com patch panel, switch e gravador ligados" loading="lazy" width="1080" height="1350"></figure>
+      <figure class="develop span-6 start-7" data-moment="picture-develops"><img src="/img/entrada-catracas.jpg" alt="Hall de entrada moderno com catracas de vidro" loading="lazy" width="1400" height="2021"></figure>
     </div>
   </section>
 
@@ -289,7 +291,7 @@
         </form>
       </div>
       <div class="frame frame--photo span-6 start-7">
-        <img class="frame__img" src="/img/cabeamento.jpg" alt="Cabos de rede amarrados e identificados dentro de um rack, ao lado do nobreak" loading="lazy" width="1400" height="1050">
+        <img class="frame__img" src="/img/predio-varandas.jpg" alt="Fachada de um prédio residencial alto com varandas" loading="lazy" width="1400" height="2100">
       </div>
     </div>
   </section>
@@ -302,7 +304,7 @@
         <div><h2 id="close-h">Manutenção com relatório todo mês</h2><p class="t-lead">Atendemos condomínios e empresas desde 2021.</p></div>
         <a class="btn btn--primary" href="#orcamento">Pedir orçamento<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
       </div>
-      <div class="close__media"><img src="/img/rack-patch-panel.jpg" alt="Patch panel com cabos azuis organizados sobre o switch" loading="lazy" width="1800" height="1350"></div>
+      <div class="close__media"><img src="/img/cameras-parede.jpg" alt="Duas câmeras de segurança presas a uma parede cinza" loading="lazy" width="1800" height="1200"></div>
     </div>
     <div class="closing__links">
       <div class="grid">
@@ -317,7 +319,7 @@
       </div>
       <div class="footer__legal">
         <span>&copy; 2026 GridTech Tecnologia e Sistemas Elétricos Ltda &nbsp; CNPJ 45.477.979/0001-21 &nbsp; <a href="https://www.instagram.com/gridtechtecnologia/" target="_blank" rel="noopener">Instagram</a></span>
-        <span>Marcas citadas pertencem a seus donos</span>
+        <span>Fotos via Unsplash &nbsp; Marcas citadas pertencem a seus donos</span>
       </div>
     </div>
   </div>
