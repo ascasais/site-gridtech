@@ -63,7 +63,10 @@
   #servicos .frame { align-self: stretch; }
   #portal .frame { aspect-ratio: 1 / 1; }
   #orcamento .frame { align-self: stretch; }
-  .close__media img { object-position: 50% 12%; }
+  .close__media img { object-position: 50% 45%; }
+  /* checklist do portal: itens feitos ticados, sem riscar o texto */
+  #portal .ui-check.is-done .ui-check__label { color: var(--u-ink); }
+  #portal .ui-check__label::after { display: none; }
   #orcamento .field:has(textarea) { grid-column: 1 / -1; }
   @media (max-width: 1023px) { #orcamento .frame { aspect-ratio: 4 / 3; } }
   @media (min-width: 1024px) and (max-width: 1279px) { #contrato { --h: 2 } }
@@ -100,7 +103,7 @@
      deal: hero split, nav nav-centre, close close-photo, footer footer-columns (footer-visit dealt again: a GridTech não recebe clientes na sede),
            rhythm surface-pairs (#portal), buttons arrow, mark: o logo da empresa
      palette: as cores da própria marca (start.mjs brand), fonte archivo
-     moments: picture-develops na foto do hall com catracas (#obras)
+     moments: picture-develops na foto do hall de entrada (#obras)
      fotos: Unsplash (licença livre), substitutas até haver fotos próprias tratadas -->
 
 <header class="nav nav--centre">
@@ -127,7 +130,7 @@
   <section class="hero hero--split" data-enter aria-labelledby="hero-h">
     <div class="wrap"><div class="hero-text grid hero__grid">
       <div class="hero__text span-5">
-        <h1 id="hero-h">Manutenção de CFTV para condomínios</h1>
+        <h1 id="hero-h">Manutenção de CFTV para condomínios e empresas</h1>
         <p class="hero__lead">Câmeras, controle de acesso e portões com visita preventiva todo mês, chamado com prioridade e relatório com fotos.</p>
         <div class="btn-row">
           <a class="btn btn--primary" href="#orcamento">Pedir orçamento<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
@@ -177,19 +180,19 @@
           <span class="step-num">1</span>
           <h3>Conferimos tudo todo mês</h3>
           <p>Câmeras, gravação, acesso e portões testados com checklist e fotos.</p>
-          <div class="panel"><img class="frame__img" src="/img/camera-teto.jpg" alt="Câmera de segurança presa ao teto em uma área comum" loading="lazy"></div>
+          <div class="panel"><img class="frame__img" src="/img/camera-dome.jpg" alt="Câmera dome instalada no teto de concreto de uma área comum" loading="lazy" style="object-position: 50% 45%"></div>
         </article>
         <article class="card card--row span-4">
           <span class="step-num">2</span>
           <h3>Atendemos o chamado</h3>
           <p>Aberto pelo portal ou pelo WhatsApp, com prioridade para quem tem contrato.</p>
-          <div class="panel"><img class="frame__img" src="/img/tecnico-painel.jpg" alt="Técnico medindo com multímetro dentro de um quadro elétrico" loading="lazy" style="object-position: 50% 30%"></div>
+          <div class="panel"><img class="frame__img" src="/img/celular-chamado.jpg" alt="Pessoa segurando o celular para abrir um chamado" loading="lazy"></div>
         </article>
         <article class="card card--row span-4">
           <span class="step-num">3</span>
           <h3>Enviamos o relatório</h3>
           <p>O síndico vê o que foi feito e aprova qualquer troca de peça antes.</p>
-          <div class="panel"><img class="frame__img" src="/img/leitor-cartao.jpg" alt="Leitor de cartão de acesso ao lado de uma porta em um corredor" loading="lazy"></div>
+          <div class="panel"><img class="frame__img" src="/img/tablet-relatorio.jpg" alt="Pessoa consultando um relatório no tablet" loading="lazy"></div>
         </article>
       </div>
     </div>
@@ -246,7 +249,7 @@
         </div>
         <figure class="pair__img"><img src="/img/catracas.jpg" alt="Catracas com leitores de acesso em uma entrada de pedestres" loading="lazy" width="1200" height="800"></figure>
       </div>
-      <figure class="develop span-6 start-7" data-moment="picture-develops"><img src="/img/entrada-catracas.jpg" alt="Hall de entrada moderno com catracas de vidro" loading="lazy" width="1400" height="2021"></figure>
+      <figure class="develop span-6 start-7" data-moment="picture-develops"><img src="/img/hall-moderno.jpg" alt="Hall de entrada claro e moderno, com recepção de mármore e elevadores" loading="lazy" width="1600" height="960" style="object-position: 40% 50%"></figure>
     </div>
   </section>
 
@@ -304,7 +307,7 @@
         <div><h2 id="close-h">Manutenção com relatório todo mês</h2><p class="t-lead">Atendemos condomínios e empresas desde 2021.</p></div>
         <a class="btn btn--primary" href="#orcamento">Pedir orçamento<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
       </div>
-      <div class="close__media"><img src="/img/cameras-parede.jpg" alt="Duas câmeras de segurança presas a uma parede cinza" loading="lazy" width="1800" height="1200"></div>
+      <div class="close__media"><img src="/img/celular-mesa.jpg" alt="Celular sobre a mesa de trabalho com um aplicativo de segurança aberto" loading="lazy" width="1800" height="1014"></div>
     </div>
     <div class="closing__links">
       <div class="grid">
