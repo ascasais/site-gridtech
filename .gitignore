@@ -25,3 +25,7 @@ dist-ssr
 
 # fotos originais (nao vao para o site)
 fotos/
+
+# verificações da skill de design
+.taste-skill/
+shots/

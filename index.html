@@ -1,45 +1,334 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0f172a" />
+<!doctype html>
+<html lang="pt-BR" data-type="service" data-radius="soft" data-buttons="arrow" data-motion>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GridTech: manutenção de CFTV e acesso para condomínios</title>
+<meta name="description" content="Instalação e manutenção preventiva de câmeras, controle de acesso, portões e redes, com relatório mensal e chamados acompanhados pelo portal do cliente.">
+<link rel="canonical" href="https://www.gridtechtecnologia.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="GridTech Tecnologia">
+<meta property="og:title" content="GridTech: manutenção de CFTV e acesso para condomínios">
+<meta property="og:description" content="Preventiva todo mês, chamados com prioridade e relatório com fotos para o síndico.">
+<meta property="og:url" content="https://www.gridtechtecnologia.com.br/">
+<meta property="og:image" content="https://www.gridtechtecnologia.com.br/share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta name="theme-color" content="#f2f3f1">
+<meta name="site-kind" content="other">
+<meta name="page-type" content="service">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/system.css">
+<link rel="stylesheet" href="/assets/ui/cards.css">
+<link rel="stylesheet" href="/assets/motion/motion.css">
+<link rel="stylesheet" href="/assets/layout/layout.css">
+<link rel="stylesheet" href="/assets/icons/icon.css">
+<style>
+:root {
+  --p-bg: #f2f3f1; --p-surface: #e4e7ea; --p-ink: #14213a; --p-muted: #596476;
+  --p-accent: #1f5fa8; --p-accent-ink: #f2f3f1; --p-action: #1f5fa8; --p-action-ink: #f2f3f1;
+  --p-inv-bg: #14213a; --p-inv-surface: #212e46; --p-inv-ink: #f2f3f1; --p-inv-muted: #959ca8;
+  --p-inv-accent: #f2f3f1; --p-inv-accent-ink: #14213a; --p-inv-action: #f2f3f1; --p-inv-action-ink: #14213a;
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-text: "Archivo", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.025em;
+  --display-tracking-xl: -0.035em;
+  --display-stretch: 110%;
+  --ly-scale: 0.9;
+}
+</style>
+<link rel="stylesheet" href="/assets/ui/base.css">
+<link rel="stylesheet" href="/assets/ui/checklist/fragment.css">
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="/assets/moments/moments.js">
+<link rel="modulepreload" href="/assets/moments/lib.js">
+<link rel="modulepreload" href="/assets/moments/picture-develops/moment.js">
+<style>
+  /* o logo da empresa no lugar da marca sorteada */
+  .nav__logo img { display: block; height: 30px; width: auto; }
+  .closing .nav__logo img { height: 36px; }
+  .rows .rows__name small { display: block; font-weight: 400; color: var(--muted); font-size: var(--t-small); }
+  /* picture-develops: a foto do rack pronto, ao lado da foto do rack vazio */
+  .develop { margin: 0; border-radius: var(--r-lg); overflow: hidden; }
+  .develop > img, .pair__img > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .pair__img { margin: 0; border-radius: var(--r-lg); overflow: hidden; }
+  #obras .develop { align-self: stretch; }
+  #obras .pair__img { height: 420px; margin-top: var(--s-7); }
+  #contrato .panel { --p-h: 312px; }
+  #servicos .frame { align-self: stretch; }
+  #portal .frame { aspect-ratio: 1 / 1; }
+  #orcamento .frame { align-self: stretch; }
+  #orcamento .field:has(textarea) { grid-column: 1 / -1; }
+  @media (max-width: 1023px) { #orcamento .frame { aspect-ratio: 4 / 3; } }
+  @media (min-width: 1024px) and (max-width: 1279px) { #contrato { --h: 2 } }
+  @media (min-width: 640px) and (max-width: 1023px) { #servicos .frame { aspect-ratio: 4 / 3; } }
+  @media (max-width: 639px) { #servicos .frame { aspect-ratio: 16 / 9; } }
+  @media (min-width: 640px) and (max-width: 1023px) { #contrato, #obras { --h: 2 } #portal .frame { aspect-ratio: 16 / 9; } }
+  @media (max-width: 639px) { #portal .frame { aspect-ratio: 3 / 2; } }
+  .facts-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-3); }
+  .facts-list li { padding-bottom: var(--s-3); border-bottom: 1px solid var(--line); }
+  @media (max-width: 1023px) {
+    #obras .pair__img { height: auto; aspect-ratio: 4 / 3; }
+    #obras .develop { aspect-ratio: 4 / 5; margin-top: var(--s-7); }
+  }
+  @media (max-width: 639px) { #contrato .panel { --p-h: 220px; } }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "GridTech Tecnologia e Sistemas Elétricos Ltda",
+  "url": "https://www.gridtechtecnologia.com.br/",
+  "logo": "https://www.gridtechtecnologia.com.br/og-gridtech.png",
+  "image": "https://www.gridtechtecnologia.com.br/share.jpg",
+  "telephone": "+55-71-99294-9859",
+  "email": "comercial@gridtechtecnologia.com.br",
+  "areaServed": [{ "@type": "City", "name": "Salvador" }, { "@type": "State", "name": "Bahia" }],
+  "address": { "@type": "PostalAddress", "streetAddress": "Rua da Indonésia, Granjas Rurais Presidente Vargas", "addressLocality": "Salvador", "addressRegion": "BA", "addressCountry": "BR" },
+  "description": "Instalação e manutenção de CFTV, controle de acesso, portões, interfonia e cabeamento estruturado para condomínios e empresas."
+}
+</script>
+</head>
+<body>
+<!-- type: service
+     deal: hero split, nav nav-centre, close close-photo, footer footer-columns (footer-visit dealt again: a GridTech não recebe clientes na sede),
+           rhythm surface-pairs (#portal), buttons arrow, mark: o logo da empresa
+     palette: as cores da própria marca (start.mjs brand), fonte archivo
+     moments: picture-develops na foto do rack pronto (#obras): a obra aparece como uma foto sendo revelada -->
 
-    <title>GridTech - Segurança Eletrônica, CFTV e Controle de Acesso</title>
-    <meta name="description" content="Instalação e manutenção de CFTV, controle de acesso, interfonia e cabeamento para condomínios e empresas em Salvador e região, com portal do cliente, relatórios mensais e acompanhamento de chamados em tempo real." />
-    <link rel="canonical" href="https://www.gridtechtecnologia.com.br/" />
+<header class="nav nav--centre">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Pular para o conteúdo</a>
+    <a class="nav__logo" href="#top"><img src="/img/logo-escuro.png" alt="GridTech Tecnologia" width="606" height="178"></a>
+    <nav class="nav__links" aria-label="Principal">
+      <div class="nav__item"><a class="nav__link" href="#servicos">Serviços</a></div>
+      <div class="nav__item"><a class="nav__link" href="#contrato">Contrato</a></div>
+      <div class="nav__item"><a class="nav__link" href="#portal">Portal</a></div>
+      <div class="nav__item"><a class="nav__link" href="#obras">Obras</a></div>
+    </nav>
+    <div class="nav__actions">
+      <a class="nav__link" href="https://web.gridtechtecnologia.com.br">Área do cliente</a>
+      <a class="btn btn--primary" href="#orcamento">Pedir orçamento</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
 
-    <!-- Prévia ao compartilhar o link (WhatsApp, redes sociais) -->
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="pt_BR" />
-    <meta property="og:site_name" content="GridTech Tecnologia" />
-    <meta property="og:title" content="GridTech - Segurança Eletrônica, CFTV e Controle de Acesso" />
-    <meta property="og:description" content="CFTV, controle de acesso, interfonia e cabeamento para condomínios e empresas, com portal do cliente e relatórios mensais." />
-    <meta property="og:url" content="https://www.gridtechtecnologia.com.br/" />
-    <meta property="og:image" content="https://www.gridtechtecnologia.com.br/og-gridtech.png" />
-    <meta name="twitter:card" content="summary" />
+<main id="top">
+  <section class="hero hero--split" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text grid hero__grid">
+      <div class="hero__text span-5">
+        <h1 id="hero-h">Manutenção de CFTV para condomínios</h1>
+        <p class="hero__lead">Câmeras, controle de acesso e portões com visita preventiva todo mês, chamado com prioridade e relatório com fotos.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="#orcamento">Pedir orçamento<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+          <a class="btn btn--secondary" href="https://wa.me/5571992949859?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20GridTech%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+        </div>
+        <dl class="hero-facts">
+          <div><dt>Em operação</dt><dd>desde 2021</dd></div>
+          <div><dt>Preventiva</dt><dd>todo mês</dd></div>
+          <div><dt>Chamados fora do prazo</dt><dd>0 em 2026</dd></div>
+        </dl>
+      </div>
+      <div class="hero__media span-6 start-7">
+        <img src="/img/hero-rack.jpg" alt="Rack montado pela GridTech com patch panels, cabos azuis identificados e switches" style="--ly-pos: 50% 45%" fetchpriority="high" width="1125" height="1500">
+      </div>
+    </div></div>
+  </section>
 
-    <!-- Dados da empresa para o Google -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "GridTech Tecnologia e Sistemas Elétricos Ltda",
-      "url": "https://www.gridtechtecnologia.com.br/",
-      "logo": "https://www.gridtechtecnologia.com.br/og-gridtech.png",
-      "image": "https://www.gridtechtecnologia.com.br/og-gridtech.png",
-      "telephone": "+55-71-99294-9859",
-      "email": "comercial@gridtechtecnologia.com.br",
-      "taxID": "45.477.979/0001-21",
-      "areaServed": [{ "@type": "City", "name": "Salvador" }, { "@type": "State", "name": "Bahia" }],
-      "address": { "@type": "PostalAddress", "streetAddress": "Rua da Indonésia, 6 - Granjas Rurais Presidente Vargas", "addressLocality": "Salvador", "addressRegion": "BA", "postalCode": "41230-020", "addressCountry": "BR" },
-      "description": "Instalação e manutenção de CFTV, controle de acesso, interfonia e cabeamento estruturado para condomínios e empresas."
-    }
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+  <section class="section" id="servicos" aria-labelledby="servicos-h">
+    <div class="wrap grid grid--top">
+      <div class="span-5">
+        <div class="section-head">
+          <h2 id="servicos-h">Serviços para condomínios e empresas</h2>
+          <p>Instalamos e mantemos a segurança eletrônica do prédio, de qualquer marca.</p>
+        </div>
+        <ul class="rows">
+          <li><span class="rows__name">CFTV<small>Câmeras, gravadores e a gravação conferida câmera por câmera</small></span></li>
+          <li><span class="rows__name">Controle de acesso<small>Leitores faciais, biometria, tags e catracas com cadastro em dia</small></span></li>
+          <li><span class="rows__name">Portões e cancelas<small>Motores deslizantes e cancelas revisados antes de travar</small></span></li>
+          <li><span class="rows__name">Interfonia<small>Interfones e totens de entrada para moradores e visitantes</small></span></li>
+          <li><span class="rows__name">Redes e cabeamento<small>Rack, cabos identificados, switches e fibra óptica</small></span></li>
+        </ul>
+      </div>
+      <div class="frame frame--photo span-6 start-7">
+        <img class="frame__img" src="/img/acesso-facial.jpg" alt="Leitor facial instalado na entrada de pedestres de um condomínio" loading="lazy" width="787" height="1400" style="object-position: 50% 40%">
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contrato" style="--hm: 2" aria-labelledby="contrato-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="contrato-h">O contrato de manutenção em 3 etapas</h2>
+        <p>Um valor fixo por mês cobre a preventiva e o atendimento dos chamados.</p>
+      </div>
+      <div class="grid">
+        <article class="card card--row span-4">
+          <span class="step-num">1</span>
+          <h3>Conferimos tudo todo mês</h3>
+          <p>Câmeras, gravação, acesso e portões testados com checklist e fotos.</p>
+          <div class="panel"><img class="frame__img" src="/img/camera-externa.jpg" alt="Câmera externa revisada na área comum de um condomínio" loading="lazy"></div>
+        </article>
+        <article class="card card--row span-4">
+          <span class="step-num">2</span>
+          <h3>Atendemos o chamado</h3>
+          <p>Aberto pelo portal ou pelo WhatsApp, com prioridade para quem tem contrato.</p>
+          <div class="panel"><img class="frame__img" src="/img/totem-acesso.jpg" alt="Totem de acesso de veículos na entrada de um condomínio" loading="lazy"></div>
+        </article>
+        <article class="card card--row span-4">
+          <span class="step-num">3</span>
+          <h3>Enviamos o relatório</h3>
+          <p>O síndico vê o que foi feito e aprova qualquer troca de peça antes.</p>
+          <div class="panel"><img class="frame__img" src="/img/rack-detalhe.jpg" alt="Detalhe de cabos de rede organizados no switch de um rack" loading="lazy"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section ground-surface" id="portal" aria-labelledby="portal-h">
+    <div class="wrap grid grid--top">
+      <div class="span-5 stack-6">
+        <div class="section-head">
+          <h2 id="portal-h">Relatórios e chamados no portal</h2>
+          <p>O síndico entra no portal e vê cada visita com data, técnico e fotos, sem precisar ligar para perguntar.</p>
+        </div>
+        <ul class="facts-list">
+          <li>Relatório mensal com a gravação conferida</li>
+          <li>Chamados abertos e fechados, com horário</li>
+          <li>Orçamentos para aprovar pelo portal</li>
+        </ul>
+        <p><a class="link" href="https://web.gridtechtecnologia.com.br">Entrar no portal</a></p>
+      </div>
+      <div class="frame frame--split span-6 start-7">
+        <div class="stage stage--fade-br">
+          <div class="at-rise to-edge" style="--w: 440px; --ay: 56px">
+            <div class="ui ui-panel ui-checks" data-ui="checklist" role="img" aria-label="Checklist da preventiva de novembro no portal do cliente">
+              <div class="ui-checks__head">
+                <div class="ui-title">Preventiva de novembro</div>
+                <span class="ui-spacer"></span>
+                <div class="ui-meta" data-checks-count>7 de 9</div>
+              </div>
+              <div class="ui-checks__bar"><i data-checks-bar style="--k:0.78"></i></div>
+              <ul class="ui-checks__list">
+                <li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Câmeras: imagem de dia e de noite</span></li>
+                <li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Gravação conferida no gravador</span></li>
+                <li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Leitor facial da portaria</span></li>
+                <li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Motor do portão da garagem</span></li>
+                <li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Cancela do estacionamento</span></li>
+                <li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Interfones dos blocos</span></li>
+                <li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Nobreak do rack</span></li>
+                <li class="ui-check"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Switch e rede das câmeras</span></li>
+                <li class="ui-check"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Relatório com fotos para o síndico</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="obras" style="--hm: 2" aria-labelledby="obras-h">
+    <div class="wrap grid grid--top">
+      <div class="span-5">
+        <div class="section-head">
+          <h2 id="obras-h">Rack e cabeamento montados do zero</h2>
+          <p>Do rack vazio ao gravador ligado, com cabos identificados. Instalamos Intelbras, Hikvision, Control iD, Nice, PPA, Furukawa e TP-Link.</p>
+        </div>
+        <figure class="pair__img"><img src="/img/rack-inicio.jpg" alt="Rack vazio no início da montagem, com a maleta de ferramentas no chão" loading="lazy" width="1080" height="1350" style="object-position: 50% 60%"></figure>
+      </div>
+      <figure class="develop span-6 start-7" data-moment="picture-develops"><img src="/img/rack-pronto.jpg" alt="O mesmo rack pronto, com patch panel, switch e gravador ligados" loading="lazy" width="1080" height="1350"></figure>
+    </div>
+  </section>
+
+  <section class="section" id="orcamento" style="--hm: 2" aria-labelledby="orcamento-h">
+    <div class="wrap grid grid--top">
+      <div class="span-5 stack-6">
+        <div class="section-head">
+          <h2 id="orcamento-h">Orçamento para o seu condomínio</h2>
+          <p>Conte o que precisa e respondemos no mesmo canal. Se preferir, chame no <a class="link" href="https://wa.me/5571992949859" target="_blank" rel="noopener">WhatsApp (71) 99294-9859</a>.</p>
+        </div>
+        <form class="form" action="https://api.emailjs.com/api/v1.0/email/send-form" method="post"
+              data-endpoint="https://api.emailjs.com/api/v1.0/email/send-form"
+              data-sending="Enviando" data-sent="Seu pedido de orçamento foi enviado. Respondemos pelo WhatsApp ou por e-mail."
+              data-failed="Não foi enviado: a conexão falhou. O que você escreveu continua aqui; tente de novo ou chame no WhatsApp."
+              data-fix="{n} campo(s) para corrigir." novalidate>
+          <input type="hidden" name="service_id" value="service_m4lx6cs">
+          <input type="hidden" name="template_id" value="template_6hp1fjd">
+          <input type="hidden" name="user_id" value="39aYk_Y8QvGllfqbd">
+          <div class="field"><label for="f-nome">Nome ou condomínio</label>
+            <input id="f-nome" name="from_name" type="text" autocomplete="name" required aria-describedby="f-nome-err">
+            <p class="field__error" id="f-nome-err" hidden>Escreva seu nome ou o nome do condomínio.</p></div>
+          <div class="field"><label for="f-tel">Telefone ou WhatsApp</label>
+            <input id="f-tel" name="phone" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="f-tel-err">
+            <p class="field__error" id="f-tel-err" hidden>Escreva um telefone com DDD.</p></div>
+          <div class="field"><label for="f-email">E-mail</label>
+            <input id="f-email" name="from_email" type="email" autocomplete="email" inputmode="email" required aria-describedby="f-email-err">
+            <p class="field__error" id="f-email-err" hidden>Escreva um e-mail com @, como nome@empresa.com.br.</p></div>
+          <div class="field"><label for="f-tipo">Tipo de serviço</label>
+            <select id="f-tipo" name="tipo" required aria-describedby="f-tipo-err">
+              <option value="">Escolha uma opção</option>
+              <option>Contrato de manutenção</option>
+              <option>Instalação nova</option>
+              <option>Visita técnica avulsa</option>
+            </select>
+            <p class="field__error" id="f-tipo-err" hidden>Escolha o tipo de serviço.</p></div>
+          <div class="field"><label for="f-msg">O que você precisa</label>
+            <textarea id="f-msg" name="message" rows="3" required aria-describedby="f-msg-err"></textarea>
+            <p class="field__error" id="f-msg-err" hidden>Conte em poucas palavras o que precisa.</p></div>
+          <div class="btn-row"><button class="btn btn--primary" type="submit">Pedir orçamento</button></div>
+          <p class="form__status" role="status" data-form-status></p>
+          <p class="t-small muted">Usamos seus dados só para responder a este pedido.</p>
+        </form>
+      </div>
+      <div class="frame frame--photo span-6 start-7">
+        <img class="frame__img" src="/img/cabeamento.jpg" alt="Cabos de rede amarrados e identificados dentro de um rack, ao lado do nobreak" loading="lazy" width="1400" height="1050">
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer closing" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--photo">
+      <div class="section-head--split">
+        <div><h2 id="close-h">Manutenção com relatório todo mês</h2><p class="t-lead">Atendemos condomínios e empresas desde 2021.</p></div>
+        <a class="btn btn--primary" href="#orcamento">Pedir orçamento<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+      </div>
+      <div class="close__media"><img src="/img/rack-patch-panel.jpg" alt="Patch panel com cabos azuis organizados sobre o switch" loading="lazy" width="1800" height="1350"></div>
+    </div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-4 stack-4">
+          <a class="nav__logo" href="#top"><img src="/img/logo-escuro.png" alt="GridTech Tecnologia" width="606" height="178"></a>
+          <p class="footer__lede">Segurança eletrônica para condomínios e empresas.</p>
+        </div>
+        <div class="span-2 footer__col"><h3>Serviços</h3><ul><li><a href="#servicos">CFTV</a></li><li><a href="#servicos">Controle de acesso</a></li><li><a href="#servicos">Portões</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Contrato</h3><ul><li><a href="#contrato">Como funciona</a></li><li><a href="#obras">Obras</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Portal</h3><ul><li><a href="#portal">Relatórios</a></li><li><a href="https://web.gridtechtecnologia.com.br">Área do cliente</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Contato</h3><ul><li><a href="https://wa.me/5571992949859" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="mailto:comercial@gridtechtecnologia.com.br">E-mail</a></li></ul></div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 GridTech Tecnologia e Sistemas Elétricos Ltda &nbsp; CNPJ 45.477.979/0001-21 &nbsp; <a href="https://www.instagram.com/gridtechtecnologia/" target="_blank" rel="noopener">Instagram</a></span>
+        <span>Marcas citadas pertencem a seus donos</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<nav class="actionbar" aria-label="Ações rápidas">
+  <a class="btn btn--primary" href="#orcamento">Pedir orçamento</a>
+</nav>
+
+<script type="module" src="/assets/system.js"></script>
+<script type="module" src="/assets/motion/motion.js"></script>
+<script type="module" src="/assets/layout/layout.js"></script>
+</body>
 </html>

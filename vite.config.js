@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
+// Página estática: o kit de design fica em public/assets e é servido como arquivos simples.
+// Os arquivos gerados pelo Vite vão para dist/static, para não se misturar com public/assets.
 export default defineConfig({
-  plugins: [react()],
+  build: { assetsDir: 'static' },
 })
